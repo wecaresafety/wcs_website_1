@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evenementenbeveiliging | We Care Safety</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css"> 
+
+    <style>
+        /* CSS Variabelen & Reset */
+        :root { --brand-blue: #4CC6E9; --dark-navy: #001D3D; --white: #ffffff; --section-gray: #f4f5f8; --text-main: #51637b; --border-color: #e5e7eb; }
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            padding-top: 130px;
+            color: var(--dark-navy);
+            background-color: var(--white); /* VOEG DIT TOE VOOR DE VOLLEDIGE ACHTERGROND */
+        }
+        .container-default { width: 100%; max-width: 1050px; margin: 0 auto; padding: 0 30px; box-sizing: border-box; }
+        
+        /* Hero */
+        .service-hero-impact { position: relative; min-height: 600px; display: flex; align-items: center; background-size: cover; background-position: center; color: #ffffff; }
+        .service-hero-impact::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(0, 29, 61, 0.8) 0%, rgba(0, 29, 61, 0.2) 100%); z-index: 1; }
+        .hero-impact-content { position: relative; z-index: 2; max-width: 600px; }
+        .hero-impact-content h1 { font-size: 52px; font-weight: 800; margin-bottom: 20px; line-height: 1.1; }
+        .btn-hero-blue { display: inline-block; background-color: var(--brand-blue); color: #ffffff; padding: 16px 40px; text-decoration: none; font-weight: 700; transition: 0.3s; border:none; cursor:pointer; }
+        
+        /* Layout Sections */
+        .content-section, .info-block-section { padding: 80px 0; }
+        .rich-text-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; }
+        .sidebar-box { background: var(--section-gray); padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+        .sidebar-list { padding-left: 20px; color: var(--text-main); line-height: 2; }
+        
+        /* Impact Card */
+        .impact-section { position: relative; height: 500px; display: flex; align-items: center; background-size: cover; background-position: center; background-attachment: fixed; }
+        .impact-section::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 29, 61, 0.4); }
+        .impact-card { position: relative; background: var(--white); padding: 50px; max-width: 500px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); z-index: 2; }
+        
+        /* Work Grid */
+        .work-list-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+        .work-item { display: flex; align-items: center; gap: 15px; background: var(--white); padding: 15px; border: 1px solid var(--border-color); }
+        .work-item i { color: var(--brand-blue); }
+        
+        /* CTA & FAQ */
+        .cta-banner-above-faq { background-color: var(--dark-navy); color: white; padding: 50px; text-align: center; }
+        .bottom-gray-section { background-color: var(--section-gray); padding: 80px 0; }
+        .faq-wrapper { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: var(--white); margin-bottom: 10px; border: 1px solid var(--border-color); }
+        .faq-question { padding: 25px 30px; display: flex; justify-content: space-between; cursor: pointer; font-weight: 700; align-items: center; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: 0.3s ease; padding: 0 30px; color: var(--text-main); line-height: 1.6; }
+        .faq-item.open .faq-answer { max-height: 500px; padding-bottom: 30px; }
+
+        /* Widget */
+        .floating-contact-widget { position: fixed; right: 0; top: 50%; transform: translateY(-50%) translateX(280px); width: 350px; background: var(--brand-blue); transition: 0.4s; z-index: 1000; display: flex; border-radius: 8px 0 0 8px; box-shadow: -5px 0 15px rgba(0,0,0,0.1); }
+        .floating-contact-widget:hover { transform: translateY(-50%) translateX(0); }
+        .widget-tab { padding: 20px 15px; writing-mode: vertical-rl; color: white; font-weight: 700; cursor: pointer; }
+        .widget-content { padding: 30px; width: 100%; }
+
+        @media (max-width: 768px) { .rich-text-grid, .work-list-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <div id="solution-engine-root"></div>
+
+    <div class="floating-contact-widget">
+        <div class="widget-tab">CONTACT</div>
+        <div class="widget-content">
+            <div style="display:flex; align-items:center; margin-bottom:20px;">
+                <img src="image/Team/DavidCotino.png" alt="David" style="width:50px; height:50px; border-radius:50%; margin-right:15px;">
+                <div style="color:white; font-size:14px;"><strong>David Cotino</strong><br>Directeur</div>
+            </div>
+            <a href="tel:+31858001835" style="color:white; text-decoration:none; display:block; margin-bottom:10px;"><i class="fa-solid fa-phone"></i> 085 800 18 35</a>
+            <a href="mailto:info@wecaresafety.nl" style="color:white; text-decoration:none;"><i class="fa-solid fa-envelope"></i> E-mail ons</a>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        window.solutionConfig = {
+            title: "Evenementenbeveiliging",
+            heroTitle: "Beveiliging op evenementen",
+            heroDesc: "Wij zijn jouw partner voor evenementenbeveiliging. Ons professionele beveiligingspersoneel zorgt voor een veilige en gastvrije ervaring.",
+            heroImage: "image/evenementen/foto1.png",
+            contentTitle: "Veiligheid en gastvrijheid: onze kernwaarden",
+            contentText: `
+                <p>Bij We Care Safety begrijpen we dat het waarborgen van de veiligheid van jouw gasten en personeel jouw hoogste prioriteit heeft.</p>
+                <p>Ons team van professionele beveiligers fungeert als een verlengstuk van jouw organisatie. Ze zijn niet alleen getraind om een veilige omgeving te waarborgen, maar begrijpen ook het belang van klantenservice.</p>
+            `,
+            focusPoints: ["Crowd management", "Toegangscontrole & Visitatie", "Gastvrijheid & Hospitality", "Samenwerken met hulpdiensten"],
+            impactTitle: "Maatwerkoplossingen voor elk evenement",
+            impactDesc: "Of je nu een groot muziekfestival, een bedrijfsevenement of een congres organiseert, We Care Safety is er om jou te ondersteunen.",
+            impactImage: "image/evenementen/event1.png",
+            definitionText: "Evenementenbeveiliging omvat een uitgebreide veiligheidsaanpak om grote groepen mensen in goede banen te leiden. We maken gebruik van crowd management technieken om de veiligheid te waarborgen.",
+            tasks: [
+                "Uitvoeren van toegangs- en visitatiecontroles",
+                "Toezicht houden over het festivalterrein",
+                "Sturen van publieksstromen (crowd control)",
+                "De-escalerend optreden bij incidenten",
+                "Fungeren als eerste aanspreekpunt voor bezoekers",
+                "Samenwerken met politie en EHBO"
+            ],
+            whyPartnerText: "We werken nauw met jou samen om een beveiligingsplan op maat te ontwikkelen. Onze beveiligers zijn gediplomeerd en getraind in crisismanagement, waardoor ze snel en effectief kunnen reageren.",
+            faqs: [
+                { q: "Wat doet een evenementenbeveiliger precies?", a: "Een evenementenbeveiliger waarborgt de veiligheid van bezoekers en de locatie. Ze voeren controles uit, sturen publieksstromen en treden de-escalerend op bij incidenten." },
+                { q: "Hoe snel kunnen jullie beveiliging inzetten?", a: "Door ons flexibele team kunnen wij vaak al op korte termijn schakelen. Voor grote evenementen adviseren wij wel om ruim van tevoren contact op te nemen." },
+                { q: "Zijn jullie beveiligers gediplomeerd?", a: "Ja, al onze beveiligers beschikken over de vereiste diploma's (zoals Event Security Officer) en een BHV- of EHBO-certificaat." }
+            ]
+        };
+    </script>
+
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+    <script src="components/contact-opnemen-vraag.js"></script>
+    
+    <script src="components/solution-template.js"></script>
+</body>
+</html>

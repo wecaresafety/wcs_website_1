@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | We Care Safety</title>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#4ac6e8">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================
+           ALGEMENE STIJLEN
+           ========================================= */
+        body {
+            background-color: #ffffff; /* Zorgt dat de website achtergrond wit is */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* =========================================
+           CONTAINER 1 STIJLEN (Bestaand, ongewijzigd)
+           ========================================= */
+        .contact-intro-section {
+            background-color: #ffffff; /* Contact container is wit */
+            padding: 200px 0 60px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .contact-grid {
+            width: 100%;
+            max-width: 1050px; 
+            margin: 0 auto;
+            padding: 0 30px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .col-main, .col-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .col-main h1 {
+            font-size: 36px;
+            color: var(--dark-navy);
+            font-weight: 600;
+            margin: 0 0 15px 0;
+        }
+
+        .col-main p.intro-text {
+            color: var(--dark-navy);
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+            max-width: 380px;
+            margin: 0 0 40px 0;
+        }
+
+        .col-info h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-navy);
+            margin: 0 0 8px 0;
+        }
+
+        .col-info p.address-text {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--dark-navy);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .contact-links-bottom {
+            margin-top: auto; 
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--dark-navy);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: opacity 0.2s;
+        }
+
+        .contact-item:hover {
+            opacity: 0.7;
+        }
+
+        .contact-item i {
+            font-size: 15px;
+            width: 20px;
+            color: var(--dark-navy);
+            text-align: center;
+        }
+
+        /* =========================================
+           CONTAINER 2 STIJLEN (FAQ / Hulp Sectie)
+           ========================================= */
+        .faq-section {
+            background-color: #f4f5f8;  /* Hulp sectie is grijs */
+            padding: 80px 0 120px 0;
+        }
+
+        .faq-container {
+            width: 100%;
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .faq-title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--dark-navy);
+            margin-bottom: 40px;
+        }
+
+        .faq-tabs {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .faq-tab-btn {
+            background-color: var(--white);
+            border: 1px solid transparent; 
+            padding: 35px 10px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-tab-btn .tab-icon {
+            font-size: 30px;
+            color: var(--dark-navy); 
+            margin-bottom: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 35px;
+            transition: color 0.3s ease;
+        }
+
+        .faq-tab-btn .tab-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--dark-navy);
+            transition: color 0.3s ease;
+        }
+
+        .faq-tab-btn.active { border-color: var(--brand-blue); }
+        .faq-tab-btn.active .tab-icon, 
+        .faq-tab-btn.active .tab-label { color: var(--brand-blue); }
+
+        .faq-tab-btn:hover { background-color: var(--dark-navy); border-color: var(--dark-navy); }
+        .faq-tab-btn:hover .tab-icon, 
+        .faq-tab-btn:hover .tab-label { color: var(--white); }
+
+        .faq-content-area { display: none; }
+        .faq-content-area.active { display: block; }
+
+        .accordion-item {
+            background-color: var(--white);
+            margin-bottom: 15px; 
+            border-radius: 2px;
+        }
+
+        .accordion-header {
+            padding: 20px 0; 
+            display: grid;
+            grid-template-columns: 1fr 4fr 1fr; 
+            gap: 15px;
+            cursor: pointer;
+            align-items: center;
+        }
+
+        .accordion-header-content {
+            grid-column: 2; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--dark-navy);
+            font-size: 15px;
+        }
+
+        .accordion-header-content i {
+            font-size: 18px; 
+            color: var(--dark-navy);
+        }
+
+        .accordion-body-wrapper {
+            max-height: 0;
+            opacity: 0;
+            transform: scaleY(0); 
+            transform-origin: top; 
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                        opacity 0.3s ease, max-height 0.4s ease;
+        }
+
+        .accordion-item.open .accordion-body-wrapper {
+            max-height: 800px;
+            opacity: 1;
+            transform: scaleY(1); 
+        }
+
+        .accordion-body-grid {
+            display: grid;
+            grid-template-columns: 1fr 4fr 1fr;
+            gap: 15px;
+            padding-bottom: 30px;
+        }
+
+        .accordion-body-content {
+            grid-column: 2;
+            color: #57636c;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .accordion-body-content p { margin: 0 0 15px 0; }
+        .accordion-body-content p:last-child { margin-bottom: 0; }
+        .accordion-body-content strong { color: var(--dark-navy); }
+
+        .raw-text-message {
+            text-align: center;
+            font-size: 15px;
+            color: var(--dark-navy);
+            font-weight: 600;
+            padding: 20px 0;
+        }
+
+        /* =========================================
+           CONTAINER 3 STIJLEN (Vernieuwd Formulier)
+           ========================================= */
+        .contact-form-section {
+            background-color: #ffffff; /* Vraag formulier is wit */
+            /* Meer ruimte onderaan voor de footer banner */
+            padding: 80px 0 150px 0; 
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .form-title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--dark-navy);
+            margin-bottom: 50px;
+        }
+
+        .contact-form-inner {
+            max-width: 800px; /* Iets breder voor de look van de afbeelding */
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        /* Specifieke class om de ruimte onder de textarea te verkleinen */
+        .textarea-group {
+            margin-bottom: 15px; 
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark-navy);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 16px 15px;
+            border: none;
+            background-color: #f1f4f8; /* Zachtgrijs/blauw */
+            border-radius: 0; /* Strakke hoeken, geen afronding */
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: var(--dark-navy);
+            box-sizing: border-box;
+            transition: background-color 0.2s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            background-color: #e2e8f0;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 200px; /* Mooi hoog tekstvak */
+        }
+
+        /* Checkbox Styling */
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 40px; /* Veel ruimte boven de knop */
+        }
+
+        .custom-checkbox {
+            width: 28px; /* Iets groter formaat */
+            height: 28px;
+            background-color: #f1f4f8;
+            border: none;
+            border-radius: 0; /* Strakke hoeken */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Grijze achtergrond blijft grijs, ook bij checked */
+        .custom-checkbox.checked {
+            background-color: #f1f4f8; 
+        }
+
+        .custom-checkbox i {
+            color: var(--dark-navy); /* Donkerblauw/Zwart vinkje */
+            font-size: 16px;
+            display: none;
+        }
+
+        .custom-checkbox.checked i {
+            display: block;
+        }
+
+        .checkbox-label {
+            font-size: 14px;
+            color: #57636c;
+        }
+
+        .checkbox-label strong {
+            color: var(--dark-navy);
+            font-weight: 600;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            background-color: var(--dark-navy);
+            color: var(--white);
+            border: none;
+            padding: 16px 35px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 0; /* Strakke hoeken */
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #001122;
+        }
+
+        /* --- Responsiveness --- */
+        @media (max-width: 991px) {
+            .contact-grid { grid-template-columns: 1fr; gap: 30px; }
+            .contact-intro-section { padding: 60px 0; }
+            .mobile-hide { display: none; }
+            .faq-tabs { grid-template-columns: repeat(3, 1fr); }
+            .faq-section { padding: 50px 0; }
+            
+            .accordion-header, .accordion-body-grid {
+                grid-template-columns: 1fr;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .accordion-header-content, .accordion-body-content { grid-column: 1; }
+            
+            .contact-form-section { padding: 60px 0 100px 0; }
+        }
+        @media (max-width: 576px) {
+            .faq-tabs { grid-template-columns: repeat(2, 1fr); }
+            .submit-btn { width: 100%; } /* Knop op mobiel volle breedte */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="contact-intro-section">
+            <div class="contact-grid">
+                
+                <div class="col-main">
+                    <div>
+                        <h1>Contact</h1>
+                        <p class="intro-text">Neem contact met ons op via e-mail, telefoon of onderstaande formulier en we reageren zo spoedig mogelijk.</p>
+                    </div>
+                    <div class="contact-links-bottom">
+                        <a href="tel:+31858001835" class="contact-item">
+                            <i class="fa-solid fa-phone" style="transform: scale(0.9);"></i> 
+                            (+31) 85 800 18 35
+                        </a>
+                        <a href="mailto:info@wecaresafety.nl" class="contact-item">
+                            <i class="fa-regular fa-envelope"></i>
+                            info@wecaresafety.nl
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-info">
+                    <div>
+                        <h1 class="mobile-hide" style="visibility: hidden; margin: 0 0 15px 0; font-size: 36px; line-height: 1.2;">Spacer</h1>
+                        <h3>Hoofdkantoor</h3>
+                        <p class="address-text">Bestevâerstraat 32 H<br>1056HP Amsterdam</p>
+                    </div>
+                    <div class="contact-links-bottom">
+                        <a href="mailto:planning@wecaresafety.nl" class="contact-item">
+                            <i class="fa-regular fa-envelope"></i>
+                            planning@wecaresafety.nl
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-info">
+                    <div class="contact-links-bottom">
+                        <a href="mailto:hrservice@wecaresafety.nl" class="contact-item">
+                            <i class="fa-regular fa-envelope"></i>
+                            hrservice@wecaresafety.nl
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="faq-container">
+                <h2 class="faq-title">Kunnen we u ergens mee helpen?</h2>
+                
+                <div class="faq-tabs">
+                    <div class="faq-tab-btn active" data-tab="tab-algemeen">
+                        <i class="fa-regular fa-question tab-icon"></i>
+                        <span class="tab-label">Algemeen</span>
+                    </div>
+                    <div class="faq-tab-btn" data-tab="tab-opleidingen">
+                        <i class="fa-regular fa-graduation-cap tab-icon"></i>
+                        <span class="tab-label">Opleidingen</span>
+                    </div>
+                    <div class="faq-tab-btn" data-tab="tab-diensten">
+                        <i class="fa-regular fa-building tab-icon"></i>
+                        <span class="tab-label">Diensten</span>
+                    </div>
+                    <div class="faq-tab-btn" data-tab="tab-mijnwcs">
+                        <i class="fa-regular fa-shield tab-icon"></i>
+                        <span class="tab-label">Mijn WCS</span>
+                    </div>
+                    <div class="faq-tab-btn" data-tab="tab-facturatie">
+                        <i class="fa-solid fa-euro-sign tab-icon"></i>
+                        <span class="tab-label">Facturatie</span>
+                    </div>
+                    <div class="faq-tab-btn" data-tab="tab-overig">
+                        <i class="fa-regular fa-star tab-icon"></i>
+                        <span class="tab-label">Overig</span>
+                    </div>
+                </div>
+
+                <div id="tab-algemeen" class="faq-content-area active">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <div></div> <div class="accordion-header-content">
+                                <span>Ik wil een spoeddienst aanvragen.</span>
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <div></div> </div>
+                        <div class="accordion-body-wrapper">
+                            <div class="accordion-body-grid">
+                                <div></div>
+                                <div class="accordion-body-content">
+                                    <p>Heeft u met spoed een objectbeveiliger, hospitality medewerker, toezichthouder of evenementenbeveiliger nodig voor uw locatie, dan kunt u ons 24/7 bellen op 085-060 81 25. Na kantooruren drukt u op één om aan te geven dat u een spoedmelding heeft.</p>
+                                    <p><strong>Bent u al klant?</strong></p>
+                                    <p>Als klant kunt u ook bellen naar uw projectmanager of teamleider. Zij kunnen u vaak sneller helpen dan onze piketdienst. Mochten zij niet bereikbaar zijn, dan kunt u altijd naar onze piketdienst bellen via 085-060 81 25.</p>
+                                </div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <div></div>
+                            <div class="accordion-header-content">
+                                <span>Ik heb een pandverbod ontvangen en ben het daar niet mee eens.</span>
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="accordion-body-wrapper">
+                            <div class="accordion-body-grid">
+                                <div></div>
+                                <div class="accordion-body-content">
+                                    <p>We Care Safety is bij sommige locaties gemachtigd door de eigenaar van de locatie om pandverboden / waarschuwingen uit te schrijven. U kan, als ontvanger van een pandverbod/waarschuwing, hier tegenin beroep gaan, als u vindt dat de betreffende beveiliger de situatie niet goed heeft ingeschat.</p>
+                                    <p><strong>Bent u al klant?</strong></p>
+                                    <p>Als klant kunt u ook bellen naar uw projectmanager of teamleider. Zij kunnen u vaak sneller helpen dan onze piketdienst. Mochten zij niet bereikbaar zijn, dan kunt u altijd naar onze piketdienst bellen via 085-060 81 25.</p>
+                                </div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <div></div>
+                            <div class="accordion-header-content">
+                                <span>Nemen jullie ook mensen aan?</span>
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="accordion-body-wrapper">
+                            <div class="accordion-body-grid">
+                                <div></div>
+                                <div class="accordion-body-content">
+                                    <p>Wij zijn altijd op zoek naar gemotiveerde professionals! Of u nu een gediplomeerd beveiliger bent, een ervaren verkeersregelaar of een representatieve toezichthouder, we komen graag met u in contact. Bekijk onze actuele vacatures op de website of stuur een open sollicitatie naar recruitment@wecaresafety.nl.</p>
+                                </div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <div></div>
+                            <div class="accordion-header-content">
+                                <span>Ik heb een klacht</span>
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="accordion-body-wrapper">
+                            <div class="accordion-body-grid">
+                                <div></div>
+                                <div class="accordion-body-content">
+                                    <p>Wij streven naar de hoogste kwaliteit in onze dienstverlening. Mocht u onverhoopt ontevreden zijn, dan horen wij dit graag. U kunt uw klacht indienen door een e-mail te sturen naar info@wecaresafety.nl. Vermeld hierbij duidelijk de datum, locatie en de aard van de klacht, zodat wij direct actie kunnen ondernemen.</p>
+                                </div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <div></div>
+                            <div class="accordion-header-content">
+                                <span>Ik heb een vraag over mijn gegevensverwerking</span>
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="accordion-body-wrapper">
+                            <div class="accordion-body-grid">
+                                <div></div>
+                                <div class="accordion-body-content">
+                                    <p>We Care Safety gaat uiterst zorgvuldig om met persoonsgegevens conform de AVG-wetgeving. Voor vragen over de verwerking van uw gegevens, het inzien van rapportages of andere privacy-gerelateerde zaken kunt u contact opnemen met onze administratie via info@wecaresafety.nl.</p>
+                                </div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-opleidingen" class="faq-content-area">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <div></div>
+                            <div class="accordion-header-content">
+                                <span>Bieden jullie opleidingen aan?</span>
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="accordion-body-wrapper">
+                            <div class="accordion-body-grid">
+                                <div></div>
+                                <div class="accordion-body-content">
+                                    <p>Op dit moment bieden wij intern opleidingen en trainingen aan voor ons eigen personeel, zoals agressieregulatie, hospitality en certificeringen voor verkeersregelaars. Zo zorgen we ervoor dat onze beveiligers en toezichthouders altijd up-to-date en bekwaam zijn voor elke opdracht.</p>
+                                </div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <div></div>
+                            <div class="accordion-header-content">
+                                <span>Zijn jullie beveiligers en toezichthouders gecertificeerd?</span>
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="accordion-body-wrapper">
+                            <div class="accordion-body-grid">
+                                <div></div>
+                                <div class="accordion-body-content">
+                                    <p>Ja, al al onze beveiligers zijn gecertificeerd conform de wetgeving (WPBR). Daarnaast beschikken onze medewerkers, afhankelijk van de inzet, over extra certificaten zoals BHV, VCA en een officiële aanstelling tot verkeersregelaar.</p>
+                                </div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-diensten" class="faq-content-area">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <div></div>
+                            <div class="accordion-header-content">
+                                <span>Hoe kan ik een beveiligingsopdracht aanvragen?</span>
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="accordion-body-wrapper">
+                            <div class="accordion-body-grid">
+                                <div></div>
+                                <div class="accordion-body-content">
+                                    <p>U kunt een aanvraag indienen door ons te bellen op 085-060 81 25 of een e-mail te sturen naar info@wecaresafety.nl. Geef hierbij kort aan om wat voor soort dienst het gaat (bijv. objectbeveiliging of toezicht), de locatie en de verwachte inzet, dan kijken wij samen naar de optimale invulling.</p>
+                                </div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <div></div>
+                            <div class="accordion-header-content">
+                                <span>Bieden jullie ook evenementenbeveiliging aan?</span>
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="accordion-body-wrapper">
+                            <div class="accordion-body-grid">
+                                <div></div>
+                                <div class="accordion-body-content">
+                                    <p>Zeker. We Care Safety is gespecialiseerd in het veilig laten verlopen van evenementen. We leveren niet alleen ervaren evenementenbeveiligers, maar kunnen ook toezichthouders en verkeersregelaars inzetten om de volledige veiligheid en doorstroom rondom uw evenement te garanderen.</p>
+                                </div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <div></div>
+                            <div class="accordion-header-content">
+                                <span>Kan ik een vrijblijvende offerte aanvragen?</span>
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="accordion-body-wrapper">
+                            <div class="accordion-body-grid">
+                                <div></div>
+                                <div class="accordion-body-content">
+                                    <p>Ja, dat kan altijd. Omdat elke situatie uniek is, komen we graag eerst met u in contact om uw wensen en risico's in kaart te brengen. Vervolgens stellen wij een heldere en vrijblijvende offerte op maat voor u op.</p>
+                                </div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-mijnwcs" class="faq-content-area">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <div></div>
+                            <div class="accordion-header-content">
+                                <span>Wat is Mijn WCS?</span>
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="accordion-body-wrapper">
+                            <div class="accordion-body-grid">
+                                <div></div>
+                                <div class="accordion-body-content">
+                                    <p>Mijn WCS is onze afgeschermde online omgeving. Hierin kunnen onze opdrachtgevers direct planningen, rapportages en facturen inzien. Voor onze medewerkers is het de plek om hun dienstrooster en gewerkte uren te beheren.</p>
+                                </div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <div></div>
+                            <div class="accordion-header-content">
+                                <span>Waar vraag ik een nieuw wachtwoord aan?</span>
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="accordion-body-wrapper">
+                            <div class="accordion-body-grid">
+                                <div></div>
+                                <div class="accordion-body-content">
+                                    <p>Ga naar het inlogscherm van Mijn WCS en klik op "Wachtwoord vergeten". Vul het e-mailadres in dat bij ons bekend is. U ontvangt dan automatisch een e-mail met een link om uw wachtwoord opnieuw in te stellen.</p>
+                                </div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-facturatie" class="faq-content-area">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <div></div>
+                            <div class="accordion-header-content">
+                                <span>Wat zijn de bedrijfsgegevens van We Care Safety B.V.?</span>
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="accordion-body-wrapper">
+                            <div class="accordion-body-grid">
+                                <div></div>
+                                <div class="accordion-body-content">
+                                    <p>
+                                        <strong>Naam:</strong> We Care Safety B.V.<br>
+                                        <strong>Handelsnamen:</strong><br>
+                                        &nbsp;&nbsp;&nbsp;We Care Safety Management<br>
+                                        &nbsp;&nbsp;&nbsp;We Care Safety Security<br>
+                                        &nbsp;&nbsp;&nbsp;We Care Safety Services<br>
+                                        <strong>Adres:</strong> Bestevâerstraat 32 H, 1056HP Amsterdam<br>
+                                        <strong>KVK Nummer:</strong> 97493791<br>
+                                        <strong>ND Nummer:</strong> ND08915<br>
+                                        <strong>BTW Nummer:</strong> NL868075899B01<br>
+                                        <strong>Telefoon:</strong> 085-060 81 25<br>
+                                        <strong>Bankrekening:</strong> NL<br>
+                                        &nbsp;&nbsp;&nbsp;BIC: RABONL2U<br>
+                                        &nbsp;&nbsp;&nbsp;Bank: NL60 RABO 0141 7851 36<br>
+                                        <strong>G-Rekening:</strong> NL<br>
+                                        &nbsp;&nbsp;&nbsp;BIC:<br>
+                                        &nbsp;&nbsp;&nbsp;Bank:
+                                    </p>
+                                </div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-overig" class="faq-content-area">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <div></div>
+                            <div class="accordion-header-content">
+                                <span>Staat uw vraag er niet tussen?</span>
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="accordion-body-wrapper">
+                            <div class="accordion-body-grid">
+                                <div></div>
+                                <div class="accordion-body-content">
+                                    <p>Geen probleem! Als u een andere vraag heeft met betrekking tot beveiliging, toezicht of onze diensten als verkeersregelaar, neem dan gerust contact met ons op via 085-060 81 25 of mail naar info@wecaresafety.nl. Wij helpen u graag verder.</p>
+                                </div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="contact-form-section">
+            <div class="form-container">
+                <h2 class="form-title">Stel hier je vraag, wij helpen je graag verder.</h2>
+                
+                <div class="contact-form-inner">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label>Uw naam*</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Bedrijfsnaam</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>E-mailadres*</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Telefoonnummer*</label>
+                            <input type="tel" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group textarea-group">
+                            <label>Over uw vraag?*</label>
+                            <textarea class="form-control" required></textarea>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <div class="custom-checkbox" id="privacy-check">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="checkbox-label">Ik ga akkoord met de privacyvoorwaarden van <strong>We Care Safety.</strong> *</span>
+                            <input type="checkbox" id="hidden-privacy" required style="display: none;">
+                        </div>
+
+                        <button type="submit" class="submit-btn">Bericht versturen</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. Tab functionaliteit
+            const tabs = document.querySelectorAll('.faq-tab-btn');
+            const contents = document.querySelectorAll('.faq-content-area');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+
+                    tab.classList.add('active');
+
+                    const targetId = tab.getAttribute('data-tab');
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+
+            // 2. Accordeon functionaliteit
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const item = this.parentElement;
+                    const icon = this.querySelector('i');
+                    const isOpen = item.classList.contains('open');
+
+                    const parentContent = this.closest('.faq-content-area');
+                    const allItems = parentContent.querySelectorAll('.accordion-item');
+                    
+                    allItems.forEach(i => {
+                        i.classList.remove('open');
+                        const ico = i.querySelector('.accordion-header-content i');
+                        if(ico) {
+                            ico.classList.remove('fa-minus');
+                            ico.classList.add('fa-plus');
+                        }
+                    });
+
+                    if (!isOpen) {
+                        item.classList.add('open');
+                        icon.classList.remove('fa-plus');
+                        icon.classList.add('fa-minus');
+                    }
+                });
+            });
+
+            // 3. Custom Checkbox functionaliteit
+            const customBox = document.getElementById('privacy-check');
+            const hiddenCheck = document.getElementById('hidden-privacy');
+
+            customBox.addEventListener('click', function() {
+                this.classList.toggle('checked');
+                // Zorgt ervoor dat de onzichtbare checkbox gelijk loopt met de visuele checkbox
+                hiddenCheck.checked = !hiddenCheck.checked;
+            });
+
+        });
+    </script>
+
+</body>
+</html>

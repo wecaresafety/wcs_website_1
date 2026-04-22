@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algemene Voorwaarden | We Care Safety</title>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#4ac6e8">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================
+           ALGEMENE STIJLEN
+           ========================================= */
+        :root {
+            --brand-blue: #4ac6e8;
+            --dark-navy: #1e293b;
+            --text-main: #334155;
+            --bg-light: #ffffff;
+            --white: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+        }
+
+        /* Banner Style */
+        .frontpage-bannerblock-wrapper {
+            position: relative;
+            background-color: var(--dark-navy);
+            height: 400px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .frontpage-bannerblock-wrapper img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+            z-index: 1;
+        }
+
+        .frontpage-bannerblock-description-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 0 10%;
+            color: var(--white);
+            max-width: 800px;
+        }
+
+        .frontpage-bannerblock-description-wrapper h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .frontpage-bannerblock-description p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+
+        /* Content area */
+        .region__container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb ol {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0 0 40px 0;
+            font-size: 14px;
+            gap: 10px;
+        }
+
+        .breadcrumb li:not(:last-child)::after {
+            content: "/";
+            margin-left: 10px;
+            color: var(--text-light);
+        }
+
+        .breadcrumb a {
+            color: var(--brand-blue);
+            text-decoration: none;
+        }
+
+        /* Paragraph styles */
+        .paragraph {
+            margin-bottom: 40px;
+        }
+
+        .paragraph h2 {
+            font-size: 26px;
+            color: var(--dark-navy);
+            margin-bottom: 20px;
+            border-bottom: none; 
+            display: block;
+            font-weight: 700;
+        }
+
+        .paragraph ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .paragraph li {
+            margin-bottom: 12px;
+            padding-left: 20px; /* Iets minder padding ivm kleinere bol */
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        /* KLEINERE zwarte bollen */
+        .paragraph li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 5px; /* Kleiner gemaakt van 8px naar 5px */
+            height: 5px; /* Kleiner gemaakt van 8px naar 5px */
+            background-color: #000000;
+            border-radius: 50%;
+        }
+
+        /* Links: GEEN bold en lijn in DEZELFDE kleur als tekst */
+        .paragraph a {
+            color: var(--text-main);
+            text-decoration: underline;
+            text-decoration-color: var(--text-main); 
+            text-decoration-thickness: 1px; 
+            text-underline-offset: 3px;
+            font-weight: 400; 
+            transition: opacity 0.2s;
+        }
+
+        .paragraph a:hover {
+            opacity: 0.7;
+        }
+
+        /* Floating Contact Widget */
+        .floating-contact-widget {
+            position: fixed;
+            right: 0; top: 50%;
+            transform: translateY(-50%) translateX(140px);
+            width: 380px; 
+            background-color: var(--brand-blue);
+            border-radius: 16px 0 0 16px;
+            z-index: 9999;
+            display: flex; flex-direction: column;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .floating-contact-widget:hover { transform: translateY(-50%) translateX(0); }
+
+        @media (max-width: 768px) {
+            .frontpage-bannerblock-description-wrapper h1 { font-size: 32px; }
+            .frontpage-bannerblock-wrapper { height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main id="main-content">
+        
+        
+
+        <div class="region__container">
+            <div class="main-content-container">
+                
+                <section class="breadcrumb">
+                    <nav role="navigation" aria-label="Kruimelpad">
+                        <ol>
+                            <li><a href="/">Home</a></li>
+                            <li>Algemene Voorwaarden</li>
+                        </ol>
+                    </nav>
+                </section>
+
+                <div class="node-content">
+                    
+                    <div class="paragraph">
+                        <h2>Algemeen</h2>
+                        <ul>
+                            <li><a href="pdf/algemene-voorwaarden-wcs-2026.pdf" target="_blank">Algemene Leveringsvoorwaarden We Care Safety B.V.</a></li>
+                            <li><a href="pages/404.html" target="_blank">Algemene Inkoopvoorwaarden We Care Safety B.V.</a></li>
+                            <li><a href="pdf/privacy-statement-wcs.pdf" target="_blank">Privacy Statement We Care Safety B.V.</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="paragraph">
+                        <h2>Beveiliging</h2>
+                        <ul>
+                            <li><a href="https://www.veiligheidsbranche.nl/algemene-voorwaarden" target="_blank">Algemene voorwaarden Nederlandse Veiligheidsbranche</a></li>
+                            <li><a href="pdf/voorwaarden-evenementenbeveiliging.pdf" target="_blank">Algemene Voorwaarden We Care Safety Events B.V.</a></li>
+                            <li><a href="pdf/ALGEMENE-VOORWAARDEN-WE-CARE-SAFETY-BV-online-2024.pdf" target="_blank">Algemene Voorwaarden We Care Safety Security B.V.</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="paragraph">
+                        <h2>Service</h2>
+                        <ul>
+                            <li><a href="pdf/leveringsvoorwaarden-hospitality.pdf" target="_blank">Algemene leveringsvoorwaarden Hospitality & Service</a></li>
+                            <li><a href="pdf/voorwaarden-receptiediensten.pdf" target="_blank">Voorwaarden Receptie- en Ondersteuningsdiensten</a></li>
+                            <li><a href="pdf/voorwaarden-verkeersregelaars.pdf" target="_blank">Specifieke voorwaarden Verkeersregelaar</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="paragraph">
+                        <h2>Toezicht & Handhaving</h2>
+                        <ul>
+                            <li><a href="pdf/voorwaarden-toezicht-handhaving.pdf" target="_blank">Algemene voorwaarden Toezicht & Handhaving</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    
+
+    <div id="footer-placeholder"></div>
+
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+
+</body>
+</html>

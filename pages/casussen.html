@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laden...</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================
+           ALGEMENE STIJLEN
+           ========================================= */
+        :root { --brand-blue: #4ac6e8; --dark-navy: #001D3D; --white: #ffffff; --section-gray: #f4f5f8; --text-main: #51637b; --border-color: #e5e7eb; }
+        body { background-color: var(--white); margin: 0; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; color: var(--text-main); padding-top: 130px; }
+        .container-default { width: 100%; max-width: 1150px; margin: 0 auto; padding: 0 30px; box-sizing: border-box; }
+
+        /* HEADER (WIT) */
+        .casussen-top-section { background-color: var(--white); padding: 60px 0 40px 0; text-align: center; }
+        .casussen-top-section h1 { font-size: 54px; color: var(--dark-navy); font-weight: 800; margin: 0 0 30px 0; }
+
+        /* FILTER MENU */
+        .filter-menu { display: flex; justify-content: center; flex-wrap: wrap; gap: 25px; list-style: none; padding: 0; margin: 0; }
+        .filter-menu li { font-size: 16px; font-weight: 700; color: var(--dark-navy); cursor: pointer; padding-bottom: 6px; border-bottom: 2px solid transparent; transition: all 0.2s ease; }
+        .filter-menu li.active, .filter-menu li:hover { color: var(--brand-blue); border-bottom: 2px solid var(--brand-blue); }
+
+        /* GRID (GRIJS) */
+        .casussen-grid-section { background-color: var(--section-gray); padding: 40px 0 80px 0; }
+        .casussen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; }
+        .casus-card { background-color: var(--white); text-decoration: none; display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.04); transition: transform 0.3s ease, opacity 0.3s ease; border: 1px solid var(--border-color); }
+        .casus-card.hide { display: none !important; }
+        .casus-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
+        
+        .card-image-container { position: relative; height: 350px; width: 100%; overflow: hidden; background-color: var(--dark-navy); }
+        .card-image-container img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .card-title-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 80px 35px 30px 35px; background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%); box-sizing: border-box; }
+        .card-title-overlay h2 { color: var(--white); margin: 0; font-size: 30px; font-weight: 700; }
+        
+        .card-content-bottom { padding: 35px; display: flex; justify-content: space-between; align-items: center; gap: 25px; }
+        .card-text { font-size: 15px; line-height: 1.7; color: var(--text-main); margin: 0; flex: 1; }
+        .card-tag { font-weight: 800; font-size: 14px; color: var(--text-main); letter-spacing: 1px; text-transform: uppercase; padding-left: 25px; border-left: 1px solid var(--border-color); min-width: 120px; text-align: right; }
+
+        @media (max-width: 992px) { .casussen-grid { grid-template-columns: 1fr; } .casussen-top-section h1 { font-size: 40px; } }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <div id="casussen-engine-root"></div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // JOUW DATA VOOR DE OVERZICHTSPAGINA
+        window.casussenConfig = {
+            pageTitle: "Casussen",
+            
+            // De filterknoppen bovenaan
+            filters: [
+                { filter: "alles", label: "Alles", active: true },
+                { filter: "kantoren", label: "Kantoren", active: false },
+                { filter: "bouw", label: "Bouw", active: false },
+                { filter: "evenementen", label: "Evenementen", active: false },
+                { filter: "openbaar", label: "Openbaar", active: false },
+                { filter: "retail", label: "Retail", active: false },
+                { filter: "opleidingen", label: "Opleidingen", active: false }
+            ],
+            
+            // Jouw daadwerkelijke projecten/cases
+            cases: [
+                {
+                    url: "casus-roselaar.html", // Link naar de detailpagina
+                    categories: "openbaar retail", // Meerdere categorieën gescheiden door een spatie
+                    image: "image/casussen/roselaar.jpg",
+                    title: "Winkelcentrum De Roselaar",
+                    text: "In winkelcentrum De Roselaar prioriteren wij een veilige en vriendelijke rol, zodat alle gasten zich gerust voelen op deze locatie.",
+                    tag: "ROSELAAR"
+                },
+                {
+                    url: "casus-dordt.html",
+                    categories: "evenementen",
+                    image: "image/casussen/dordt.jpg",
+                    title: "Dordt in Stoom",
+                    text: "We Care Safety verzorgt de beveiligingsdiensten tijdens het grote Stoom-evenement in de historische binnenstad van Dordrecht.",
+                    tag: "EVENT"
+                },
+                {
+                    url: "casus-kantoor.html",
+                    categories: "kantoren bouw",
+                    image: "image/casussen/kantoor.jpg",
+                    title: "Beveiliging Zuidas",
+                    text: "24/7 objectbeveiliging en toegangscontrole tijdens de grootschalige renovatie van een iconisch kantoorpand in Amsterdam.",
+                    tag: "KANTOREN"
+                }
+                // Voeg hier simpelweg een nieuw blokje {} toe voor een nieuwe casus!
+            ]
+        };
+    </script>
+
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+    <script src="components/contact-opnemen-vraag.js"></script>
+    
+    <script src="components/casussen-template.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Pagina niet gevonden | We Care Safety</title>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#4ac6e8">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================
+           404 SPECIFIEKE STIJLEN
+           ========================================= */
+        body {
+            background-color: var(--white);
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .error-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh; /* Zorgt dat de content mooi in het midden staat tussen header en footer */
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .error-container {
+            max-width: 600px;
+        }
+
+        /* Groot 404 getal met subtiele gloed */
+        .error-code {
+            font-size: 120px;
+            font-weight: 800;
+            color: var(--dark-navy);
+            margin: 0;
+            line-height: 1;
+            letter-spacing: -5px;
+        }
+
+        .error-code span {
+            color: var(--brand-blue);
+        }
+
+        .error-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--dark-navy);
+            margin: 20px 0 15px 0;
+        }
+
+        .error-text {
+            font-size: 18px;
+            color: #57636c;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        /* Knoppen onder de foutmelding */
+        .error-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-home {
+            background-color: var(--brand-blue);
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+            border: 2px solid var(--brand-blue);
+        }
+
+        .btn-home:hover {
+            background-color: var(--dark-navy);
+            border-color: var(--dark-navy);
+        }
+
+        .btn-search {
+            background-color: transparent;
+            color: var(--dark-navy);
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid #e0e3e7;
+            transition: all 0.3s;
+        }
+
+        .btn-search:hover {
+            border-color: var(--dark-navy);
+            background-color: #f8f9fa;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .error-code { font-size: 80px; }
+            .error-title { font-size: 26px; }
+            .error-text { font-size: 16px; }
+            .error-actions { flex-direction: column; }
+            .btn-home, .btn-search { width: 100%; box-sizing: border-box; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="error-section">
+            <div class="error-container">
+                <h1 class="error-code">4<span>0</span>4</h1>
+                <h2 class="error-title">Oeps! Pagina niet gevonden.</h2>
+                <p class="error-text">
+                    Het lijkt erop dat de pagina die u zoekt niet (meer) bestaat of is verplaatst. 
+                    Geen zorgen, onze beveiligers helpen u graag de weg terug te vinden.
+                </p>
+                
+                <div class="error-actions">
+                    <a href="index.html" class="btn-home">
+                        <i class="fa-solid fa-house"></i> Terug naar Home
+                    </a>
+                    <a href="pages/zoeken.html" class="btn-search">
+                        <i class="fa-solid fa-magnifying-glass"></i> Zoeken
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+
+</body>
+</html>

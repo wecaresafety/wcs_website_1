@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | We Care Safety</title>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#4ac6e8">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================
+           ALGEMENE STIJLEN & VARIABELEN
+           ========================================= */
+        :root {
+            --brand-blue: #4CC6E9;
+            --dark-navy: #001D3D;
+            --white: #ffffff;
+            --section-gray: #f4f5f8;
+            --text-main: #51637b;
+            --border-color: #e5e7eb;
+        }
+
+        body {
+            background-color: var(--white);
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            color: var(--text-main);
+            padding-top: 130px; 
+        }
+
+        .container-default {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+            box-sizing: border-box;
+        }
+
+        /* KNOPPEN */
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--brand-blue);
+            color: var(--white);
+            padding: 16px 40px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-navy);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-white {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--white);
+            padding: 14px 38px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--white);
+            cursor: pointer;
+        }
+
+        .btn-outline-white:hover {
+            background-color: var(--white);
+            color: var(--dark-navy);
+        }
+
+        /* HERO */
+        .hero-section {
+            position: relative;
+            background-image: url('image/home/hero-home.png'); 
+            background-size: cover;
+            background-position: center;
+            padding: 180px 0; 
+            color: var(--white);
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, rgba(0, 29, 61, 0.85) 0%, rgba(0, 29, 61, 0.4) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 650px;
+        }
+
+        .hero-title {
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin: 0 0 20px 0;
+        }
+
+        .hero-text {
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 0 0 35px 0;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* INTRO */
+        .intro-section {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .intro-content h2 {
+            font-size: 36px;
+            color: var(--dark-navy);
+            margin: 0 0 25px 0;
+            font-weight: 800;
+        }
+
+        .intro-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .intro-image {
+            width: 100%;
+            height: 450px;
+            background-image: url('image/home/team-home.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+        }
+
+        /* DIENSTEN GRID */
+        .services-section {
+            padding: 100px 0;
+            background-color: var(--section-gray);
+        }
+
+        .section-header {
+            text-align: left; /* TEKST LINKS GEZET */
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            color: var(--dark-navy);
+            margin: 0;
+            font-weight: 800;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 29, 61, 0.08);
+            /* BLAUWE RAND VERWIJDERD */
+        }
+
+        .card-image-wrapper {
+            height: 220px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .card-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .card-image-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 20px;
+            color: var(--dark-navy);
+            font-weight: 700;
+            margin: 0 0 15px 0;
+        }
+
+        .card-desc {
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+        }
+
+        .card-link {
+            margin-top: auto;
+            color: var(--brand-blue);
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        @media (max-width: 992px) {
+            .intro-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-section { text-align: center; }
+            .hero-content { margin: 0 auto; }
+            .hero-buttons { justify-content: center; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 36px; }
+            .services-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        
+        <section class="hero-section">
+            <div class="container-default">
+                <div class="hero-content">
+                    <h1 class="hero-title">Professionele beveiliging met oog voor hospitality.</h1>
+                    <p class="hero-text">Wij beschermen uw gebouwen, evenementen en de openbare ruimte. Betrouwbaar, gediplomeerd en altijd 24/7 flexibel inzetbaar.</p>
+                    <div class="hero-buttons">
+                        <a href="#diensten" class="btn-primary">Onze diensten</a>
+                        <a href="pages/contact.html" class="btn-outline-white">Neem contact op</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="intro-section">
+            <div class="container-default">
+                <div class="intro-grid">
+                    <div class="intro-content">
+                        <h2>Samen werken wij aan een veiligere omgeving</h2>
+                        <p>We Care Safety is uw partner in veiligheid. Wij begrijpen dat beveiliging niet alleen draait om toezicht houden, maar ook om het creëren van een omgeving waar mensen zich welkom voelen.</p>
+                        <p>Of het nu gaat om een exclusief evenement, nachtelijke surveillances of daadkrachtige verkeersregelaars: wij leveren maatwerk met gecertificeerde professionals.</p>
+                        <a href="pages/over-ons.html" style="color: var(--brand-blue); font-weight: 700; text-decoration: none; display: inline-block; margin-top: 10px;">Lees meer over ons <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="intro-image"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="diensten" class="services-section">
+            <div class="container-default">
+                
+                <div class="section-header">
+                    <h2>Onze Veiligheidsoplossingen</h2>
+                </div>
+
+                <div class="services-grid">
+                    
+                    <a href="oplossingen/evenementenbeveiliging.html" class="service-card">
+                        <div class="card-image-wrapper">
+                            <img src="image/evenementen/foto1.png" alt="Evenementenbeveiliging" onerror="this.src='https://via.placeholder.com/600x400/001D3D/FFFFFF?text=Evenementen'">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Evenementenbeveiliging</h3>
+                            <p class="card-desc">Professioneel crowd management en toegangscontrole op festivals, sportevenementen en congressen.</p>
+                            <div class="card-link">Meer informatie <i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                    <a href="oplossingen/objectbeveiliging.html" class="service-card">
+                        <div class="card-image-wrapper">
+                            <img src="image/objecten/foto2.png" alt="Objectbeveiliging" onerror="this.src='https://via.placeholder.com/600x400/001D3D/FFFFFF?text=Objectbeveiliging'">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Objectbeveiliging</h3>
+                            <p class="card-desc">Bescherming van uw bedrijfspand, bouwplaats of terrein ter preventie van inbraak en vandalisme.</p>
+                            <div class="card-link">Meer informatie <i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                    <a href="oplossingen/service-en-hospitality.html" class="service-card">
+                        <div class="card-image-wrapper">
+                            <img src="image/service/foto1.png" alt="Service- en hospitality" onerror="this.src='https://via.placeholder.com/600x400/001D3D/FFFFFF?text=Hospitality'">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Service & Hospitality</h3>
+                            <p class="card-desc">Representatieve beveiligers die fungeren als het veilige én gastvrije visitekaartje van uw organisatie.</p>
+                            <div class="card-link">Meer informatie <i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                    <a href="oplossingen/verkeersmaatregelen.html" class="service-card">
+                        <div class="card-image-wrapper">
+                            <img src="image/traffic/foto1.png" alt="Verkeersmaatregelen" onerror="this.src='https://via.placeholder.com/600x400/001D3D/FFFFFF?text=Verkeer'">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Verkeersmaatregelen</h3>
+                            <p class="card-desc">Gecertificeerde beroepsverkeersregelaars voor een veilige doorstroming bij events en werkzaamheden.</p>
+                            <div class="card-link">Meer informatie <i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                    <a href="oplossingen/toezicht-en-handhaving.html" class="service-card">
+                        <div class="card-image-wrapper">
+                            <img src="image/handhaving/foto1.png" alt="Toezicht & Handhaving" onerror="this.src='https://via.placeholder.com/600x400/001D3D/FFFFFF?text=Toezicht'">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Toezicht & Handhaving</h3>
+                            <p class="card-desc">Extra ogen en oren op straat ter ondersteuning van gemeenten voor een veilige openbare ruimte.</p>
+                            <div class="card-link">Meer informatie <i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+        <div id="contact-opnemen-vraag-placeholder"></div>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+    <script src="components/contact-opnemen-vraag.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Over ons | We Care Safety</title>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#4ac6e8">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================
+           ALGEMENE STIJLEN & VARIABELEN
+           ========================================= */
+        :root {
+            --brand-blue: #4ac6e8;
+            --dark-navy: #001D3D;
+            --white: #ffffff;
+            --section-gray: #f8f9fa;
+            --text-main: #51637b;
+            --border-color: #e5e7eb;
+        }
+
+        body {
+            background-color: var(--white); 
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden; 
+            color: var(--text-main);
+            padding-top: 130px;
+        }
+
+        .container-default {
+            width: 100%;
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 0 30px;
+            box-sizing: border-box;
+            position: relative; 
+        }
+
+        .section-subtitle {
+            color: var(--brand-blue); 
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* =========================================
+           CONTAINER 1 - OVER ONS / HET VERHAAL
+           ========================================= */
+        .story-section {
+            padding: 100px 0 80px 0; 
+            background-color: var(--white);
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 60px;
+            align-items: center;
+        }
+
+        .story-content {
+            max-width: 600px;
+        }
+
+        .story-title {
+            color: var(--dark-navy);
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin: 0 0 25px 0;
+        }
+
+        .story-title span {
+            color: var(--brand-blue);
+        }
+
+        .story-text {
+            color: var(--text-main);
+            font-size: 16px;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .story-text strong {
+            color: var(--dark-navy);
+        }
+
+        .story-image-wrapper {
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 29, 61, 0.08);
+            border: 1px solid var(--border-color);
+            background-color: var(--dark-navy);
+            height: 400px;
+        }
+
+        .story-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* =========================================
+           CONTAINER 2: VISIE & KERNWAARDEN (GRIJS)
+           ========================================= */
+        .vision-section {
+            padding: 100px 0 100px 0;
+            background-color: var(--section-gray);
+            overflow: hidden; 
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .vision-header {
+            margin-bottom: 60px;
+            max-width: 800px;
+        }
+
+        .vision-title {
+            color: var(--dark-navy);
+            font-size: 40px; 
+            font-weight: 800;
+            line-height: 1.2;
+            margin: 0 0 20px 0;
+        }
+
+        .vision-text {
+            color: var(--text-main);
+            font-size: 16px;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .slider-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 30px;
+        }
+
+        .slider-title {
+            font-size: 28px;
+            color: var(--dark-navy);
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .slider-nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .slider-btn {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            outline: none;
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-left {
+            background-color: var(--white);
+            color: var(--dark-navy);
+        }
+        .btn-left:hover {
+            background-color: var(--dark-navy);
+            color: var(--white);
+            border-color: var(--dark-navy);
+        }
+
+        .btn-right {
+            background-color: var(--brand-blue); 
+            color: var(--white);
+            border-color: var(--brand-blue);
+        }
+        .btn-right:hover {
+            background-color: var(--dark-navy);
+            border-color: var(--dark-navy);
+        }
+
+        .slider-mask {
+            width: 100%; 
+            overflow: hidden; 
+        }
+
+        .slider-track {
+            display: flex;
+            gap: 30px; 
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+            width: max-content; 
+            padding-bottom: 20px; 
+        }
+
+        /* Value Cards */
+        .value-card {
+    background-color: var(--white);
+    padding: 40px;
+    flex: 0 0 400px; 
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    transition: box-shadow 0.3s ease; /* Alleen nog een subtiele schaduw op hover */
+}
+
+.value-card:hover {
+    box-shadow: 0 15px 30px rgba(0, 29, 61, 0.05); /* Geen transform omhoog en geen blauwe rand meer! */
+}
+
+        .value-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            background-color: var(--section-gray);
+            border: 1px solid var(--border-color);
+        }
+
+        .value-icon-wrapper i {
+            color: var(--brand-blue);
+            font-size: 24px; 
+        }
+
+        .value-card-title {
+            font-size: 20px;
+            color: var(--dark-navy);
+            font-weight: 800;
+            margin: 0 0 15px 0;
+            line-height: 1.3;
+        }
+
+        .value-card-text {
+            font-size: 15px;
+            color: var(--text-main);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* =========================================
+           CONTAINER 3: ONS TEAM
+           ========================================= */
+        .team-section {
+            padding: 100px 0 120px 0;
+            background-color: var(--white);
+        }
+
+        .team-grid-layout {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr; 
+            gap: 80px;
+            align-items: start; 
+        }
+
+        .team-cards-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 40px; 
+        }
+
+        .team-member-card {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .member-image-wrapper {
+            width: 100%; 
+            max-width: 200px;
+            aspect-ratio: 1 / 1; 
+            margin: 0 auto 20px auto; 
+            border-radius: 50%; 
+            overflow: hidden; 
+            background-color: var(--section-gray); 
+            border: 1px solid var(--border-color);
+        }
+
+        .member-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            filter: grayscale(20%); 
+            transition: filter 0.3s ease, transform 0.3s ease; 
+        }
+
+        .team-member-card:hover .member-image {
+            transform: scale(1.05); 
+            filter: grayscale(0%);
+        }
+
+        .member-info { width: 100%; }
+
+        .member-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark-navy); 
+            margin: 0 0 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .member-name a {
+            color: var(--text-main);
+            font-size: 16px;
+            transition: color 0.2s;
+        }
+        
+        .member-name a:hover {
+            color: var(--brand-blue);
+        }
+
+        .member-role {
+            font-size: 14px; 
+            font-weight: 700;
+            color: var(--brand-blue); 
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .team-text-col {
+            position: sticky;
+            top: 150px; 
+        }
+
+        .team-title {
+            color: var(--dark-navy);
+            font-size: 40px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin: 0 0 25px 0;
+        }
+
+        .team-description {
+            color: var(--text-main);
+            font-size: 16px;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        @media (max-width: 1024px) {
+            .story-grid { gap: 40px; }
+            .team-grid-layout { gap: 40px; grid-template-columns: 1fr 1fr; }
+            .value-card { flex: 0 0 350px; }
+        }
+        
+        @media (max-width: 768px) {
+            .story-grid { grid-template-columns: 1fr; }
+            .story-title { font-size: 38px; }
+            .vision-title { font-size: 36px; }
+            
+            .slider-header-flex { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .value-card { flex: 0 0 300px; }
+
+            .team-grid-layout { 
+                grid-template-columns: 1fr; 
+                display: flex;
+                flex-direction: column-reverse; 
+            }
+            .team-text-col {
+                position: static;
+                margin-bottom: 40px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .vision-title { font-size: 32px; }
+            .story-title { font-size: 32px; }
+            .value-card { flex: 0 0 85vw; } 
+            .team-cards-col { grid-template-columns: 1fr; } 
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="story-section">
+            <div class="container-default">
+                <div class="story-grid">
+                    <div class="story-content">
+                        <span class="section-subtitle">Over ons</span>
+                        <h1 class="story-title">Het <span>verhaal</span> achter We Care Safety</h1>
+                        <p class="story-text">
+                            We Care Safety is opgericht door <strong>David Cotino</strong> en <strong>Raven Gerten</strong>. Twee professionals die de grootste evenementen en projecten van Nederland hebben voorzien van crowd management, evenementenbeveiliging en hospitality.<br><br>
+                            Na ruim 18 jaar deze activiteiten te hebben uitgevoerd vanuit een directie en management functie, is de tijd aangebroken om deze expertise vanuit een eigen onderneming met de markt te delen.
+                        </p>
+                    </div>
+                    <div class="story-image-wrapper">
+                        <img src="foto1.png" alt="Over ons We Care Safety" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'600\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23001D3D\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%23ffffff\' font-family=\'sans-serif\' font-size=\'24\'%3ETeam Foto Ontbreekt%3C/text%3E%3C/svg%3E'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="vision-section">
+    <div class="container-default">
+        
+        <div class="vision-header">
+            <span class="section-subtitle">Onze Visie</span>
+            <h2 class="vision-title">Een integrale aanpak. Mensen, middelen en techniek.</h2>
+            <p class="vision-text">Door te investeren in mens, middel & techniek en gebruik te maken van onze kennis & kunde, bieden wij een hoogwaardig dienstenpakket aan waarmee wij locaties en publieksgebieden veiliger maken.</p>
+        </div>
+
+        <div class="slider-wrapper">
+            <div class="slider-header-flex">
+                <h3 class="slider-title">Onze kernwaarden</h3>
+                <div class="slider-nav">
+                    <button class="slider-btn btn-left" id="btnPrev" aria-label="Vorige">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </button>
+                    <button class="slider-btn btn-right" id="btnNext" aria-label="Volgende">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="slider-mask">
+                <div class="slider-track" id="sliderTrack" style="transform: translateX(0px);">
+                    
+                    <div class="value-card">
+                        <div class="value-icon-wrapper bg-navy">
+                            <i class="fa-regular fa-user"></i>
+                        </div>
+                        <h4 class="value-card-title">Bezoeker staat centraal</h4>
+                        <p class="value-card-text">Door middel van beveiliging en gastheerschap zorgen we ervoor dat de bezoeker zich altijd vrij, beschermd en welkom voelt.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <div class="value-icon-wrapper bg-blue">
+                            <i class="fa-regular fa-handshake"></i>
+                        </div>
+                        <h4 class="value-card-title">Commitment</h4>
+                        <p class="value-card-text">Ons team is volledig gecommitteerd aan het leveren van een zo volledig en gastvrij mogelijke beveiligingsoplossing.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <div class="value-icon-wrapper bg-yellow">
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <h4 class="value-card-title">Excellence</h4>
+                        <p class="value-card-text">Door onze kennis en continue training blijven we vooroplopen in de beveiliging zodat we jou elke dag beter kunnen helpen.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <div class="value-icon-wrapper bg-navy">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h4 class="value-card-title">Verantwoordelijkheid</h4>
+                        <p class="value-card-text">Wij zijn verantwoordelijk voor de veiligheid van jouw bezoeker. Het welzijn van jouw bezoeker is dan ook onze prioriteit.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <div class="value-icon-wrapper bg-blue">
+                            <i class="fa-regular fa-comments"></i>
+                        </div>
+                        <h4 class="value-card-title">Communicatie</h4>
+                        <p class="value-card-text">Open en transparante communicatie is de sleutel tot een succesvolle samenwerking. Wij staan altijd klaar om naar je te luisteren.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <div class="value-icon-wrapper bg-yellow">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <h4 class="value-card-title">Teamwork</h4>
+                        <p class="value-card-text">Met een team-inzet en gecoördineerde acties zorgen we ervoor dat elk aspect van jouw beveiligingsbehoeften wordt aangepakt.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+        <section class="team-section">
+            <div class="container-default">
+                <div class="team-grid-layout">
+                    
+                    <div class="team-cards-col" id="team-cards-container">
+                        </div>
+
+                    <div class="team-text-col">
+                        <span class="section-subtitle">Het Team</span>
+                        <h2 class="team-title">Ontmoet de experts achter We Care Safety</h2>
+                        <p class="team-description">Van de beveiliging van uw grootschalige evenement tot de permanente bewaking van uw bedrijfspand en gastvrije receptiediensten; dit team zorgt ervoor dat alles tot in de puntjes is geregeld.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="contact-opnemen-vraag-placeholder"></div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+    <script src="components/contact-opnemen-vraag.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // --- Custom JS Slider Logica voor Kernwaarden ---
+            const track = document.getElementById('sliderTrack');
+            const btnPrev = document.getElementById('btnPrev');
+            const btnNext = document.getElementById('btnNext');
+            
+            let currentIndex = 0;
+            const totalCards = 6; 
+            
+            function updateSliderPosition() {
+                const card = track.querySelector('.value-card');
+                if(!card) return;
+                const cardWidth = card.offsetWidth;
+                const gap = 30; 
+                
+                const moveAmount = currentIndex * (cardWidth + gap);
+                track.style.transform = `translateX(-${moveAmount}px)`;
+            }
+
+            btnNext.addEventListener('click', () => {
+                if(currentIndex < totalCards - 2) {
+                    currentIndex++;
+                    updateSliderPosition();
+                }
+            });
+
+            btnPrev.addEventListener('click', () => {
+                if(currentIndex > 0) {
+                    currentIndex--;
+                    updateSliderPosition();
+                }
+            });
+
+            window.addEventListener('resize', updateSliderPosition);
+
+            // --- Team Generatie ---
+            const teamContainer = document.getElementById('team-cards-container');
+            const teamMembers = [
+                { naam: "David Cotino", functie: "Algemeen Directeur", foto: "image/Team/DavidCotino.png", link: "https://www.linkedin.com/in/davidy%C3%BCgh-henry-gabri%C3%ABl-cotino-696703251/" },
+                { naam: "Raven Gerten", functie: "Operationeel Directeur", foto: "image/Team/RavenGerten.png", link: "https://www.linkedin.com/in/ravengerten2003/" },
+                { naam: "Naam", functie: "HR Manager", foto: "image/Team/profile-placeholder.png", link: "#" },
+                { naam: "Naam", functie: "Accountmanager", foto: "image/Team/profile-placeholder.png", link: "#" },
+                { naam: "Naam", functie: "Opleidingsmanager", foto: "image/Team/profile-placeholder.png", link: "#" }
+            ];
+
+            teamMembers.forEach(member => {
+                // Interne fallback SVG om net::ERR_CONNECTION_CLOSED te voorkomen
+                const fallbackImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23001D3D'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-size='20'%3EGeen foto%3C/text%3E%3C/svg%3E";
+                
+                const memberCard = `
+                    <div class="team-member-card">
+                        <div class="member-image-wrapper">
+                            <img src="${member.foto}" alt="${member.naam}" class="member-image" onerror="this.src='${fallbackImg}'">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">
+                                ${member.naam}
+                                <a href="${member.link}" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                            </h3>
+                            <p class="member-role">${member.functie}</p>
+                        </div>
+                    </div>
+                `;
+                teamContainer.innerHTML += memberCard;
+            });
+        });
+    </script>
+
+</body>
+</html>

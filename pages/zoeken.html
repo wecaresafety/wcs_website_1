@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoeken | We Care Safety</title>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#4ac6e8">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================
+           ALGEMENE STIJLEN
+           ========================================= */
+        body {
+            background-color: var(--white);
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container-default {
+            width: 100%;
+            max-width: 1050px; 
+            margin: 0 auto;
+            padding: 0 30px;
+            box-sizing: border-box;
+        }
+
+        /* =========================================
+           ZOEK PAGINA STIJLEN 
+           ========================================= */
+        .search-page-section {
+            padding: 100px 0 150px 0;
+            min-height: 60vh;
+        }
+
+        /* Breadcrumb (HOME > ZOEKEN) */
+        .breadcrumb {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .breadcrumb a {
+            color: var(--brand-blue);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 0.7;
+        }
+
+        .breadcrumb span {
+            color: #8b95a1;
+            margin: 0 8px;
+        }
+
+        .breadcrumb .current {
+            color: #8b95a1;
+        }
+
+        /* Zoekveld (Groot, icoon binnenin) */
+        .search-input-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 60px;
+        }
+
+        .search-input-box {
+            width: 100%;
+            padding: 22px 60px 22px 25px; 
+            font-size: 20px;
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-navy);
+            background-color: #f8f9fa; 
+            border: 1px solid #e0e3e7;
+            border-radius: 12px; 
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .search-input-box:focus {
+            outline: none;
+            border-color: var(--brand-blue);
+            background-color: var(--white);
+            box-shadow: 0 4px 20px rgba(76, 198, 233, 0.1);
+        }
+
+        .search-input-box::placeholder {
+            color: #8b95a1;
+        }
+
+        .search-icon-btn {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark-navy);
+            cursor: pointer;
+            padding: 0;
+            transition: color 0.2s ease;
+        }
+
+        .search-icon-btn:hover {
+            color: var(--brand-blue);
+        }
+
+        /* =========================================
+           ZOEKRESULTATEN LIJST
+           ========================================= */
+        .results-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .no-results-msg {
+            font-size: 18px;
+            color: #57636c;
+            padding: 20px 0;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 45px 0;
+            border-bottom: 1px solid #f1f4f8; 
+            text-decoration: none;
+            color: inherit;
+            transition: background-color 0.3s ease;
+        }
+
+        .result-item:hover {
+            background-color: #fafbfc; 
+        }
+
+        .result-content {
+            max-width: 800px;
+        }
+
+        .result-meta {
+            font-size: 12px;
+            color: #8b95a1;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .result-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-navy);
+            margin: 0 0 15px 0;
+            transition: color 0.2s ease;
+        }
+
+        .result-item:hover .result-title {
+            color: var(--brand-blue);
+        }
+
+        .result-snippet {
+            font-size: 16px;
+            color: #57636c;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .result-arrow {
+            font-size: 20px;
+            color: var(--brand-blue); 
+            transition: transform 0.2s ease;
+        }
+
+        .result-item:hover .result-arrow {
+            transform: translateX(5px); 
+        }
+
+        @media (max-width: 768px) {
+            .result-title { font-size: 24px; }
+            .search-input-box { font-size: 16px; padding: 18px 50px 18px 20px; }
+            .result-item { padding: 30px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="search-page-section">
+            <div class="container-default">
+                
+                <div class="breadcrumb">
+                    <a href="index.html">HOME</a>
+                    <span><i class="fa-solid fa-caret-right"></i></span>
+                    <span class="current">ZOEKEN</span>
+                </div>
+
+                <div class="search-input-container">
+                    <input type="text" id="searchInput" class="search-input-box" placeholder="Typ om te zoeken..." autocomplete="off">
+                    <button class="search-icon-btn" aria-label="Zoeken">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+
+                <div class="results-container" id="resultsContainer">
+                    </div>
+
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            const searchInput = document.getElementById('searchInput');
+            const resultsContainer = document.getElementById('resultsContainer');
+
+            // --- DATABASE AANGEPAST AAN DE MAPPENSTRUCTUUR ---
+            const siteData = [
+                {
+                    title: "Professionele Objectbeveiliging",
+                    url: "oplossingen/objectbeveiliging.html", // Staat in de pages map
+                    date: "Diensten",
+                    snippet: "Ontdek hoe objectbeveiliging uw bedrijf beschermt tegen inbraak, vandalisme en andere veiligheidsrisico's. Vraag een vrijblijvende offerte aan!",
+                    keywords: ["objectbeveiliging", "pand", "kantoor", "receptie", "beveiliging", "school", "ziekenhuis"]
+                },
+                {
+                    title: "Evenementenbeveiliging",
+                    url: "oplossingen/evenementenbeveiliging.html", // Aangepast: staat in oplossingen map!
+                    date: "Diensten",
+                    snippet: "Een goed georganiseerd evenement kan niet zonder goede beveiligers. Wij zorgen voor een veilig evenement met blije mensen, ondersteund door effectieve inzet.",
+                    keywords: ["evenement", "festival", "feest", "crowd management", "beveiliging", "gasten"]
+                },
+                {
+                    title: "Service- en hospitality",
+                    url: "pages/veiligheidsoplossingen.html",
+                    date: "Diensten",
+                    snippet: "Onze beveiligers zijn tevens gastheren en -vrouwen. Wij maken het verschil door uw bezoekers een veilig en welkom gevoel te geven.",
+                    keywords: ["hospitality", "service", "gastheer", "gastvrouw", "receptie", "welkom"]
+                },
+                {
+                    title: "Verkeersmaatregelen en -begeleiding",
+                    url: "pages/veiligheidsoplossingen.html",
+                    date: "Diensten",
+                    snippet: "Wij helpen u met maatwerk in verkeersmanagement op locatie bij grote bezoekersstromen of complexe logistiek, zodat alles soepel verloopt.",
+                    keywords: ["verkeer", "verkeersregelaar", "parkeren", "logistiek", "begeleiding"]
+                },
+                {
+                    title: "Toezicht & Handhaving",
+                    url: "pages/veiligheidsoplossingen.html",
+                    date: "Diensten",
+                    snippet: "We Care Safety ondersteunt gemeenten bij het uitvoeren van veiligheidsbeleid en houdt straten, buurten en evenementen veilig.",
+                    keywords: ["toezicht", "handhaving", "boa", "gemeente", "straatcoach"]
+                },
+                {
+                    title: "Over We Care Safety",
+                    url: "pages/over-ons.html",
+                    date: "Over ons",
+                    snippet: "Het verhaal achter We Care Safety. Ontmoet ons team, onze directie en lees meer over onze visie en kernwaarden in de beveiliging.",
+                    keywords: ["over ons", "team", "missie", "visie", "kernwaarden", "david cotino", "raven gerten", "directie"]
+                },
+                {
+                    title: "Vrijblijvende Offerte Aanvragen",
+                    url: "pages/offerte-aanvragen.html",
+                    date: "Contact",
+                    snippet: "Heeft u behoefte aan professionele beveiliging? Vul het formulier in en ontvang snel een vrijblijvende offerte op maat voor uw situatie.",
+                    keywords: ["offerte", "aanvragen", "prijs", "kosten", "inhuren", "tarief"]
+                },
+                {
+                    title: "Neem Contact Op",
+                    url: "pages/contact.html",
+                    date: "Contact",
+                    snippet: "Heeft u vragen over onze diensten of wilt u direct iemand spreken? Vind hier onze contactgegevens, het hoofdkantoor adres en bel ons.",
+                    keywords: ["contact", "bellen", "telefoon", "email", "adres", "klantenservice"]
+                }
+            ];
+
+            function renderResults(results) {
+                resultsContainer.innerHTML = ''; 
+
+                if (results.length === 0) {
+                    resultsContainer.innerHTML = '<div class="no-results-msg">Er zijn geen resultaten gevonden voor uw zoekopdracht. Probeer een andere term.</div>';
+                    return;
+                }
+
+                results.forEach(item => {
+                    const resultHTML = `
+                        <a href="${item.url}" class="result-item">
+                            <div class="result-content">
+                                <div class="result-meta">
+                                    <i class="fa-regular fa-folder-open"></i> ${item.date}
+                                </div>
+                                <h2 class="result-title">${item.title}</h2>
+                                <p class="result-snippet">${item.snippet}</p>
+                            </div>
+                            <div class="result-arrow">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+                        </a>
+                    `;
+                    resultsContainer.innerHTML += resultHTML;
+                });
+            }
+
+            // Bij het openen van de pagina laten we NIETS zien.
+            resultsContainer.innerHTML = '';
+
+            // Event listener die zoekt zodra je typt
+            searchInput.addEventListener('input', function() {
+                const query = this.value.toLowerCase().trim();
+
+                // Als het veld leeg is, maak de container weer leeg en stop met zoeken.
+                if (query === '') {
+                    resultsContainer.innerHTML = '';
+                    return;
+                }
+
+                const filteredResults = siteData.filter(item => {
+                    const inTitle = item.title.toLowerCase().includes(query);
+                    const inSnippet = item.snippet.toLowerCase().includes(query);
+                    const inKeywords = item.keywords.some(keyword => keyword.includes(query));
+                    
+                    return inTitle || inSnippet || inKeywords;
+                });
+
+                renderResults(filteredResults);
+            });
+        });
+    </script>
+
+</body>
+</html>

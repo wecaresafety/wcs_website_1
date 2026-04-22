@@ -1,0 +1,403 @@
+/* =========================================
+   ALGEMENE STIJLEN & VARIABELEN
+   ========================================= */
+:root {
+    --brand-blue: #4CC6E9;     /* Lichtblauw */
+    --dark-navy: #001D3D;      /* Donkerblauw */
+    --light-gray: #f8f9fa;     /* Achtergrond voor de top bar */
+    --border-color: #e5e7eb;   /* Lijn onder top bar */
+    --white: #ffffff;
+    --footer-bg: #001122;      /* Diep donkerblauw voor footer */
+    --text-muted: #6c85a8;     /* Grijze kleur voor de footer/topbar */
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-color: #fafafa; 
+    padding-top: 130px; /* Voorkomt dat content onder de fixed header verdwijnt */
+}
+
+.container-default {
+    width: 100%;
+    max-width: 1050px; /* Aangepast naar 1050px voor perfecte uitlijning met de footer */
+    margin: 0 auto;
+    padding: 0 40px;   /* Aangepast naar 40px voor dezelfde zijmarges als de footer */
+    box-sizing: border-box;
+}
+
+/* =========================================
+   HEADER STIJLEN (Two-Tier & Wit)
+   ========================================= */
+
+.header-container {
+    width: 100%;
+    max-width: 1150px !important;
+    margin: 0 auto !important;
+    padding: 0 0px !important;
+    box-sizing: border-box;
+}
+
+.header-wrapper {
+    width: 100%;
+    position: fixed; /* Header blijft vastplakken aan het scherm */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: var(--white);
+    box-shadow: 0 4px 20px rgba(0, 29, 61, 0.06);
+}
+
+/* --- Top Bar --- */
+.header-top-bar {
+    background-color: var(--light-gray);
+    border: none; /* Hiermee verdwijnen de donkergrijze randen boven en onder */
+    padding: 8px 0;
+    font-size: 13px;
+    
+    /* Nieuwe code voor de soepele animatie: */
+    max-height: 50px; /* Zorgt voor een limiet zodat we het naar 0 kunnen animeren */
+    overflow: hidden;
+    opacity: 1;
+    transition: all 0.3s ease-in-out; /* Bepaalt de snelheid van het inklappen */
+}
+
+/* Deze class wordt door JavaScript toegevoegd tijdens het scrollen */
+.header-wrapper.scrolled .header-top-bar {
+    max-height: 0;
+    padding: 0;
+    opacity: 0;
+}
+
+.top-bar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-muted);
+}
+
+.top-bar-right {
+    display: flex;
+    gap: 24px;
+}
+
+.top-bar-right a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.top-bar-right a:hover {
+    color: var(--brand-blue);
+}
+
+/* --- Main Bar --- */
+.header-main-bar {
+    padding: 15px 0;
+}
+
+.header-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo {
+    height: 60px; /* Originele grootte teruggezet */
+    display: block;
+    transform: scale(1.8); /* Originele schaling teruggezet */
+    transform-origin: left center;
+    filter: brightness(0); /* TRUC: Maakt het logo volledig zwart */
+    transition: opacity 0.3s ease;
+}
+
+.header-logo:hover {
+    opacity: 0.8; /* Subtiele hover effect op het logo */
+}
+
+.header-right-side {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.header-nav-menu-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+}
+
+.header-nav-link {
+    color: var(--dark-navy);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.header-nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--brand-blue);
+    transition: width 0.3s ease;
+}
+
+.header-nav-link:hover {
+    color: var(--brand-blue);
+}
+
+.header-nav-link:hover::after {
+    width: 100%;
+}
+
+.btn-primary {
+    background-color: var(--brand-blue);
+    color: var(--white);
+    padding: 12px 28px;
+    border-radius: 0px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    display: inline-block;
+    border: 2px solid var(--brand-blue); 
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(76, 198, 233, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: var(--dark-navy);
+    color: var(--white);
+    border-color: var(--dark-navy);
+    box-shadow: 0 4px 12px rgba(0, 29, 61, 0.2);
+}
+
+/* =========================================
+   FOOTER STIJLEN (Licht & Modern)
+   ========================================= */
+footer {
+    background-color: var(--light-gray);
+    color: var(--dark-navy);
+    position: relative;
+    margin-top: 100px; 
+    padding-bottom: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-cta-wrapper {
+    max-width: 1050px; 
+    margin: 0 auto;
+    transform: translateY(-50%);
+    padding: 0 40px;
+}
+
+.footer-cta-banner {
+    background-color: var(--brand-blue);
+    padding: 40px 100px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0px;
+    box-shadow: 0 10px 30px rgba(76, 198, 233, 0.2);
+}
+
+.footer-cta-banner h2 {
+    margin: 0;
+    font-size: 20px; 
+    font-weight: 700;
+    color: var(--white);
+    max-width: 400px;
+    line-height: 1.3;
+}
+
+.btn-cta-outline {
+    border: 2px solid var(--white);
+    color: var(--white);
+    padding: 10px 22px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border-radius: 0px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-cta-outline:hover {
+    background-color: var(--white);
+    color: var(--brand-blue);
+}
+
+/* --- Hoofdgedeelte Footer (Kolommen) --- */
+.footer-main {
+    max-width: 1050px; /* Verkleind voor grotere marges aan de zijkant */
+    margin: 0 auto;
+    padding: 0 40px 40px 40px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-col-contact {
+    flex: 1;
+    max-width: 300px;
+}
+
+.footer-col-sitemap {
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.footer-main h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--dark-navy);
+}
+
+.footer-main ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-main ul li {
+    margin-bottom: 12px;
+}
+
+.footer-main a, .footer-contact-info p, .footer-contact-info a {
+    color: #51637b; 
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+    margin: 5px 0;
+    display: block;
+}
+
+.footer-main a:hover, .footer-contact-info a:hover {
+    color: var(--brand-blue);
+}
+
+/* --- Middenrij: Logo | Slogan | Socials --- */
+.footer-middle-row {
+    max-width: 1050px; /* Ligt in één lijn met de rest */
+    margin: 20px auto 40px auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Door flex: 1 op de linker en rechter box te zetten, staat de tekst in het midden áltijd strak gecentreerd */
+.footer-middle-left {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.footer-middle-center {
+    flex: 1;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--dark-navy); /* Kleur van de slogan */
+}
+
+.footer-middle-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.justitie-logo {
+    width: 80px; 
+    height: auto;
+    display: block;
+    mix-blend-mode: multiply;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-socials a {
+    color: #032140; /* Zelfde kleur als copyright tekst */
+    font-size: 20px;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-socials a:hover {
+    color: var(--brand-blue);
+}
+
+/* --- Footer Bottom (Copyright etc.) --- */
+.footer-bottom {
+    border-top: 1px solid var(--border-color); 
+    padding-top: 25px;
+}
+
+.footer-bottom-container {
+    max-width: 1050px; /* Ligt in één lijn met de rest */
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottom-left span, .bottom-left a, .bottom-right span, .bottom-right a {
+    font-size: 13px;
+    color: #51637b;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+.bottom-left a:hover, .bottom-right a:hover {
+    color: var(--brand-blue);
+}
+
+/* =========================================
+   RESPONSIVENESS FOOTER
+   ========================================= */
+@media (max-width: 991px) {
+    .footer-cta-banner { 
+        flex-direction: column; 
+        text-align: center; 
+        gap: 20px; 
+        padding: 30px;
+    }
+    .footer-main { 
+        flex-direction: column; 
+    }
+    .footer-col-sitemap {
+        grid-template-columns: 1fr 1fr;
+    }
+    .footer-middle-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .footer-bottom-container { 
+        flex-direction: column; 
+        gap: 20px; 
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-col-sitemap {
+        grid-template-columns: 1fr; /* Alles onder elkaar op mobiel */
+    }
+}

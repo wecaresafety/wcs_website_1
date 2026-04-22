@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laden...</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================
+           ALGEMENE STIJLEN & VARIABELEN
+           ========================================= */
+        :root { --brand-blue: #4ac6e8; --dark-navy: #001D3D; --white: #ffffff; --section-gray: #f8f9fa; --text-main: #51637b; --border-color: #e5e7eb; }
+        body { background-color: var(--white); margin: 0; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; color: var(--text-main); padding-top: 130px; }
+        .container-default { width: 100%; max-width: 1150px; margin: 0 auto; padding: 0 30px; box-sizing: border-box; }
+
+        /* CASUS DETAIL: HEADER & INTRO */
+        .casus-detail-header { padding: 80px 0 60px 0; border-bottom: 1px solid var(--border-color); }
+        .casus-detail-header h1 { font-size: 48px; color: #0b1f40; font-weight: 800; margin: 0 0 30px 0; }
+        .intro-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 60px; align-items: center; }
+        .intro-text p { font-size: 20px; line-height: 1.7; color: #555; margin: 0; }
+        .intro-logo { display: flex; justify-content: flex-end; }
+        .intro-logo img { max-width: 200px; height: auto; object-fit: contain; }
+
+        /* CASUS DETAIL: CONTENT ALINEA'S */
+        .casus-content-section { padding: 60px 0; background-color: var(--white); }
+        .content-block { max-width: 850px; margin-bottom: 50px; }
+        .content-block:last-child { margin-bottom: 0; }
+        .content-block h2 { font-size: 28px; color: #0b1f40; font-weight: 700; margin: 0 0 20px 0; }
+        .content-block p { font-size: 16px; line-height: 1.8; margin: 0 0 20px 0; color: var(--text-main); }
+
+        /* CASUS DETAIL: MEER CASUSSEN (GRIJS) */
+        .meer-casussen-section { background-color: var(--section-gray); padding: 80px 0; border-top: 1px solid var(--border-color); }
+        .meer-casussen-section h3 { font-size: 32px; color: #0b1f40; font-weight: 800; margin: 0 0 40px 0; }
+        
+        .casussen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; }
+        .casus-card { background-color: var(--white); text-decoration: none; display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.04); transition: transform 0.3s ease; border: 1px solid var(--border-color); }
+        .casus-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
+        
+        .card-image-container { position: relative; height: 300px; width: 100%; overflow: hidden; background-color: var(--dark-navy); }
+        .card-image-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .casus-card:hover .card-image-container img { transform: scale(1.03); }
+        
+        .card-title-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 60px 30px 25px 30px; background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%); box-sizing: border-box; }
+        .card-title-overlay h2 { color: var(--white); margin: 0; font-size: 26px; font-weight: 700; }
+        
+        .card-content-bottom { padding: 30px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+        .card-text { font-size: 15px; line-height: 1.7; color: #555; margin: 0; flex: 1; }
+        .card-tag { font-weight: 800; font-size: 14px; color: var(--text-main); letter-spacing: 1px; text-transform: uppercase; padding-left: 20px; border-left: 1px solid var(--border-color); min-width: 100px; text-align: right; }
+
+        @media (max-width: 992px) { .intro-grid { grid-template-columns: 1fr; gap: 30px; } .intro-logo { justify-content: flex-start; } .casussen-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <div id="casus-view-engine-root"></div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Vul hier simpelweg de data in voor deze specifieke casus!
+        window.casusViewConfig = {
+            title: "Winkelcentrum De Roselaar",
+            introText: "In winkelcentrum De Roselaar prioriteren wij een veilige en vriendelijke rol, zodat alle gasten zich gerust voelen op deze locatie.",
+            clientLogo: "image/casussen/roselaar-logo.png",
+            
+            // De tekstblokken op de pagina
+            contentBlocks: [
+                {
+                    subtitle: "Werkzaamheden",
+                    text: `
+                        <p>We Care Safety is de trotse veiligheidspartner van winkelcentrum de Roselaar. Wij zorgen dagelijks voor een veilige en gastvrije omgeving voor bezoekers, winkeliers en medewerkers.</p>
+                        <p>Onze werkzaamheden omvatten toezicht houden, preventief handelen bij onveilige situaties, en adequaat reageren bij incidenten zoals winkeldiefstal, vandalisme of medische noodgevallen.</p>
+                    `
+                },
+                {
+                    subtitle: "Gastrol",
+                    text: `
+                        <p>Naast het waarborgen van veiligheid, spelen wij ook een cruciale rol als gastheer. Wij zijn het eerste aanspreekpunt voor bezoekers en geven hen een warm welkom.</p>
+                        <p>Of het nu gaat om het verstrekken van informatie, het wijzen van de weg of het geruststellen van een bezorgde klant, onze beveiligers tonen altijd een servicegerichte houding. Dit maakt de beveiligers niet alleen de ogen en oren van het winkelcentrum, maar ook een vertrouwd gezicht.</p>
+                    `
+                },
+                {
+                    subtitle: "Communicatie",
+                    text: `
+                        <p>Goede communicatie is essentieel voor een veilig winkelcentrum. Dagelijks worden er meerdere rondes gelopen en goed afgestemd met winkelpersoneel van de Roselaar over actuele aandachtspunten en mogelijke risico’s.</p>
+                        <p>Al deze verschillende factoren zorgen voor een optimale beleving voor de bezoeker en een fijne werkomgeving voor het personeel. Iets wat bij ons altijd het belangrijkste doel is.</p>
+                    `
+                }
+            ],
+            
+            // Bepaal hier welke 2 gerelateerde cases je onderaan wilt tonen
+            relatedCases: [
+                {
+                    url: "casus-dordt.html",
+                    image: "image/casussen/dordt.jpg",
+                    title: "Dordt in Stoom",
+                    text: "We Care Safety verzorgt de beveiligingsdiensten tijdens het grote Stoom-evenement in de historische binnenstad van Dordrecht.",
+                    tag: "EVENT"
+                },
+                {
+                    url: "casus-zuidas.html",
+                    image: "image/casussen/kantoor.jpg",
+                    title: "Beveiliging Zuidas",
+                    text: "24/7 objectbeveiliging en toegangscontrole tijdens de grootschalige renovatie van een iconisch kantoorpand in Amsterdam.",
+                    tag: "KANTOREN"
+                }
+            ]
+        };
+    </script>
+
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+    <script src="components/contact-opnemen-vraag.js"></script>
+    
+    <script src="components/casussen-template-view.js"></script>
+
+</body>
+</html>

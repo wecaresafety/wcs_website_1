@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offerte Aanvragen | We Care Safety</title>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#4ac6e8">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================
+           BASIS STIJLEN & VARIABELEN
+           ========================================= */
+        :root {
+            --brand-blue: #4CC6E9;
+            --dark-navy: #001D3D;
+            --white: #ffffff;
+            --input-bg: #f1f4f8; /* Zachtgrijze kleur van de velden */
+            --text-gray: #57636c;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* =========================================
+           OFFERTE PAGINA STIJLEN
+           ========================================= */
+        .offerte-section {
+            padding: 80px 0 150px 0;
+        }
+
+        .offerte-container {
+            width: 100%;
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Het formulier is niet over de volle breedte, maar links uitgelijnd */
+        .offerte-form-wrapper {
+            max-width: 700px;
+        }
+
+        .page-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--dark-navy);
+            margin-top: 0;
+            margin-bottom: 40px;
+        }
+
+        .form-section {
+            margin-bottom: 35px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--dark-navy);
+            margin-bottom: 12px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 16px 15px;
+            border: none;
+            background-color: var(--input-bg);
+            border-radius: 0; /* Strakke hoeken, geen afronding */
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: var(--dark-navy);
+            box-sizing: border-box;
+            transition: background-color 0.2s ease;
+        }
+
+        .form-control::placeholder {
+            color: #8b95a1; /* Kleur van de placeholder tekst */
+        }
+
+        .form-control:focus {
+            outline: none;
+            background-color: #e2e8f0;
+        }
+
+        /* Specifieke marges voor velden die onder elkaar staan in dezelfde sectie */
+        .mb-15 {
+            margin-bottom: 15px;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        /* Grid layout voor velden naast elkaar (zoals E-mail & Postcode) */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* Custom Select (Dropdown) Styling */
+        .custom-select-wrapper {
+            position: relative;
+        }
+
+        .custom-select-wrapper select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+            padding-right: 40px; /* Ruimte voor het pijltje */
+        }
+
+        /* Het pijltje in de dropdown */
+        .custom-select-wrapper::after {
+            content: '\f078'; /* FontAwesome chevron-down */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8b95a1;
+            pointer-events: none; /* Zorgt dat je er doorheen kan klikken */
+        }
+
+        /* Verzend Knop - Lichtblauw zoals in foto image_8dcc31.png */
+        .submit-btn-blue {
+            background-color: var(--brand-blue);
+            color: var(--white);
+            border: none;
+            padding: 16px 35px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 0; /* Strakke hoeken */
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn-blue:hover {
+            opacity: 0.85;
+        }
+
+        .submit-btn-blue:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr; /* Onder elkaar op mobiel */
+            }
+            .offerte-section {
+                padding: 50px 0 100px 0;
+            }
+            .submit-btn-blue {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="offerte-section">
+            <div class="offerte-container">
+                
+                <div class="offerte-form-wrapper">
+                    <h1 class="page-title">Vrijblijvende offerte aanvragen</h1>
+                    
+                    <form id="offerteForm">
+                        
+                        <div class="form-section">
+                            <label class="form-label">Waarvoor wilt u een vrijblijvende offerte aanvragen?*</label>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" id="dienst" required>
+                                    <option value="" disabled selected>Waarvoor wilt u een vrijblijvende offerte aanvragen?</option>
+                                    <option value="Objectbeveiliging">Objectbeveiliging</option>
+                                    <option value="Winkelsurveillance">Winkelsurveillance</option>
+                                    <option value="Evenementen">Evenementen</option>
+                                    <option value="Crowd management">Crowd management</option>
+                                    <option value="Receptiediensten">Receptiediensten</option>
+                                    <option value="Toezichthouder">Toezichthouder</option>
+                                    <option value="Straatcoach">Straatcoach</option>
+                                    <option value="Overig">Overig</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <label class="form-label">Over uw aanvraag*</label>
+                            <textarea class="form-control mb-15" id="specifiekeWensen" placeholder="Benoem hier uw specifieke wensen" required></textarea>
+                            <textarea class="form-control" id="aanvullendeVragen" placeholder="Nog aanvullende vragen?"></textarea>
+                        </div>
+
+                        <div class="form-section">
+                            <label class="form-label">Uw gegevens*</label>
+                            
+                            <input type="text" class="form-control mb-15" id="bedrijfsnaam" placeholder="Bedrijfsnaam">
+                            
+                            <input type="text" class="form-control mb-15" id="kvk" placeholder="KVK nummer">
+                            
+                            <input type="text" class="form-control mb-15" id="naam" placeholder="Voor- en achternaam" required>
+                            
+                            <input type="tel" class="form-control mb-15" id="telefoon" placeholder="Telefoonnummer" required>
+                            
+                            <div class="form-row mb-15">
+                                <input type="email" class="form-control" id="email" placeholder="E-mailadress" required>
+                                <input type="text" class="form-control" id="postcode" placeholder="Postcode">
+                            </div>
+                            
+                            <div class="form-row">
+                                <input type="text" class="form-control" id="huisnr" placeholder="Huisnr.">
+                                <div></div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-btn-blue" id="submitBtn">Bericht versturen</button>
+
+                    </form>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+    <script src="api/offerte-aanvragen.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Statement | We Care Safety</title>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#4ac6e8">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================
+           ALGEMENE STIJLEN & PRIVACY LAYOUT
+           ========================================= */
+        :root {
+            --brand-blue: #4ac6e8;
+            --dark-navy: #1e293b;
+            --text-main: #334155;
+            --bg-light: #ffffff;
+            --white: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+        }
+
+        .container-privacy {
+            width: 100%;
+            max-width: 900px; 
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        /* --- Banner --- */
+        .privacy-banner {
+            position: relative;
+            height: 350px;
+            background-color: var(--dark-navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .privacy-banner img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+        }
+
+        .privacy-banner h1 {
+            position: relative;
+            z-index: 2;
+            color: var(--white);
+            font-size: 48px;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        /* --- Breadcrumb --- */
+        .breadcrumb-nav {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .breadcrumb-nav ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .breadcrumb-nav a {
+            color: var(--brand-blue);
+            text-decoration: none;
+        }
+
+        /* --- Content Paragraphs --- */
+        .privacy-section {
+            margin-bottom: 45px;
+        }
+
+        .privacy-section h2 {
+            font-size: 28px;
+            color: var(--dark-navy);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .privacy-section p {
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .privacy-section ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .privacy-section li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .privacy-section em {
+            font-weight: 600;
+            font-style: normal;
+            display: block;
+            margin-bottom: 10px;
+            color: var(--dark-navy);
+        }
+
+        /* Floating Widget */
+        .floating-contact-widget {
+            position: fixed;
+            right: 0; top: 50%;
+            transform: translateY(-50%) translateX(140px);
+            width: 380px; 
+            background-color: var(--brand-blue);
+            border-radius: 16px 0 0 16px;
+            z-index: 9999;
+            display: flex; flex-direction: column;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .floating-contact-widget:hover { transform: translateY(-50%) translateX(0); }
+        .floating-contact-header { display: flex; align-items: center; padding: 18px 24px; cursor: pointer; }
+        .floating-avatar { width: 58px; height: 58px; border-radius: 50%; object-fit: cover; background-color: var(--white); padding: 2px; }
+        .floating-contact-info { margin-left: 16px; }
+        .floating-title { display: block; font-size: 24px; color: var(--white); font-weight: 800; }
+
+        @media (max-width: 768px) {
+            .privacy-banner h1 { font-size: 32px; }
+            .privacy-banner { height: 250px; }
+        }
+    </style>
+</head>
+<body class="facilicom_ned_groep node-page">
+
+    <div id="header-placeholder"></div>
+
+    <main id="main-content">
+        
+        <section class="privacy-banner">
+            <img src="https://www.facilicomgroup.nl/sites/facilicom_ned_groep/files/2024-08/118-_dsc0517_4.jpg" alt="Privacy We Care Safety">
+            <h1>Privacy Statement</h1>
+        </section>
+
+        <div class="container-privacy">
+            
+            <nav class="breadcrumb-nav" aria-label="Kruimelpad">
+                <ol>
+                    <li><a href="/">Home</a></li>
+                    <li>/</li>
+                    <li>Privacyverklaring</li>
+                </ol>
+            </nav>
+
+            <div class="privacy-content">
+                
+                <article class="privacy-section">
+                    <h2>Algemeen</h2>
+                    <p>We Care Safety respecteert uw privacy. Wij zorgen ervoor dat de persoonsgegevens die u aan ons toevertrouwt, vertrouwelijk worden behandeld. Bij persoonsgegevens gaat het om alle informatie over een persoon. Ook gegevens die indirect iets over iemand zeggen, zijn persoonsgegevens. Met deze verklaring voeren wij geheel conform de Algemene Verordening Gegevensbescherming (AVG) onze informatieplicht richting betrokkene(n) uit.</p>
+                </article>
+
+                <article class="privacy-section">
+                    <h2>Scope</h2>
+                    <p>Deze verklaring is van toepassing op We Care Safety en haar gelieerde diensten.</p>
+                </article>
+
+                <article class="privacy-section">
+                    <h2>Verwerkingsverantwoordelijke</h2>
+                    <p>We Care Safety verwerkt persoonsgegevens om diensten aan te kunnen bieden, dienstverlening te kunnen verbeteren en om persoonlijk met u als betrokkene te kunnen communiceren. We Care Safety is verwerkingsverantwoordelijke voor álle verwerkingen van persoonsgegevens zoals hieronder genoemd.</p>
+                </article>
+
+                <article class="privacy-section">
+                    <h2>Welke persoonsgegevens worden verwerkt en met welk doel?</h2>
+                    <em>Op de volgende manieren levert u gegevens bij ons aan:</em>
+                    <ul>
+                        <li>Direct via een (digitaal) formulier of offerte-aanvraag;</li>
+                        <li>Door gebruik te maken van onze beveiligingsdiensten;</li>
+                        <li>Door een van onze websites te bezoeken;</li>
+                        <li>Door ons te benaderen via social media.</li>
+                    </ul>
+
+                    <em>Als u een website van ons bezoekt:</em>
+                    <p>Verwerken wij persoonsgegevens zoals uw IP-adres, klikgedrag en browsergegevens om onze online diensten technisch te beheren en te verbeteren. Hiervoor gebruiken wij cookies. Wanneer u een formulier invult, verwerken wij uw naam, e-mailadres en telefoonnummer om contact met u op te kunnen nemen.</p>
+
+                    <em>Als u een overeenkomst met ons aangaat:</em>
+                    <p>Verwerken wij uw NAW-gegevens, betalingsgegevens en contactinformatie om de overeenkomst en de administratie (zoals facturatie) uit te kunnen voeren.</p>
+                </article>
+
+                <article class="privacy-section">
+                    <h2>Grondslagen voor verwerking</h2>
+                    <p>Uw persoonsgegevens worden alleen verwerkt als:</p>
+                    <ul>
+                        <li>U hiervoor toestemming heeft gegeven;</li>
+                        <li>De verwerking noodzakelijk is voor de uitvoering van onze overeenkomst;</li>
+                        <li>De verwerking wettelijk verplicht is (bijv. ND-vergunning eisen);</li>
+                        <li>Wij een gerechtvaardigd belang hebben bij de verwerking.</li>
+                    </ul>
+                </article>
+
+                <article class="privacy-section">
+                    <h2>Beveiliging persoonsgegevens</h2>
+                    <p>We Care Safety hecht grote waarde aan de beveiliging en bescherming van uw persoonsgegevens. Wij zorgen voor passende technische en organisatorische maatregelen om een op het risico afgestemd beveiligingsniveau te waarborgen.</p>
+                </article>
+
+                <article class="privacy-section">
+                    <h2>Privacy rechten van betrokkenen</h2>
+                    <p>Een verzoek tot inzage, correctie, verwijdering of overdraagbaarheid van uw gegevens kunt u sturen naar <a href="mailto:info@wecaresafety.nl">info@wecaresafety.nl</a>. U ontvangt binnen maximaal vier weken bericht van ons.</p>
+                </article>
+
+                <article class="privacy-section">
+                    <h2>Aanpassing privacy statement</h2>
+                    <p>We Care Safety heeft het recht de inhoud van dit privacy statement op ieder gewenst moment te wijzigen. Het aangepaste statement wordt op onze website gepubliceerd.</p>
+                </article>
+
+            </div>
+        </div>
+
+    </main>
+
+    <div class="floating-contact-widget">
+        <div class="floating-contact-header">
+            <img src="image/Team/DavidCotino.png" alt="David Cotino" class="floating-avatar" onerror="this.src='profile-placeholder.png'">
+            <div class="floating-contact-info">
+                <span class="floating-title">Vragen over privacy?</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+
+</body>
+</html>

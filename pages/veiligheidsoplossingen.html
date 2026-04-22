@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veiligheidsoplossingen | We Care Safety</title>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#4ac6e8">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================
+           ALGEMENE STIJLEN & VARIABELEN
+           ========================================= */
+        :root {
+            --brand-blue: #4CC6E9;
+            --dark-navy: #001D3D;
+            --white: #ffffff;
+            --section-gray: #f4f5f8; /* Het grijs voor de onderkant */
+            --text-main: #51637b;
+        }
+
+        body {
+            background-color: var(--white);
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            padding-top: 130px; /* Ruimte voor de fixed header */
+        }
+
+        .container-default {
+            width: 100%;
+            max-width: 1050px; /* Gelijk aan footer voor perfecte uitlijning */
+            margin: 0 auto;
+            padding: 0 30px;
+            box-sizing: border-box;
+        }
+        
+        /* =========================================
+           BOVENKANT (WIT)
+           ========================================= */
+        .solutions-intro-section {
+            background-color: var(--white);
+            padding: 80px 0 60px 0;
+        }
+
+        .intro-content h1 {
+            font-size: 42px;
+            color: var(--dark-navy);
+            font-weight: 700;
+            margin: 0 0 25px 0;
+        }
+
+        .intro-text-wrapper {
+            max-width: 850px;
+            color: var(--dark-navy);
+            line-height: 1.6;
+            font-size: 18px;
+        }
+
+        .intro-text-wrapper p {
+            margin-bottom: 20px;
+        }
+
+        .intro-text-wrapper strong {
+            font-weight: 600;
+            color: var(--dark-navy);
+        }
+
+        /* =========================================
+           ONDERKANT (GRIJS)
+           ========================================= */
+        .solutions-grid-section {
+            background-color: var(--section-gray); /* De grijze achtergrond */
+            padding: 80px 0 100px 0;
+        }
+
+        .grid-header {
+            margin-bottom: 40px;
+        }
+
+        .grid-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--dark-navy);
+            margin: 0;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        /* De Kaarten (Wit op grijs) */
+        .solution-card {
+            background: var(--white); 
+            border-radius: 0px; /* Strakke hoeken conform knoppen */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            height: 100%;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 29, 61, 0.1);
+        }
+
+        .card-image {
+            height: 220px;
+            background-color: #e2e8f0;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .solution-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark-navy);
+            margin: 0 0 15px 0;
+        }
+
+        .card-content p {
+            font-size: 14px;
+            color: var(--text-main);
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .card-link {
+            margin-top: auto;
+            color: var(--brand-blue);
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: gap 0.2s ease;
+        }
+
+        .solution-card:hover .card-link {
+            gap: 15px;
+        }
+
+        /* CTA Sectie (Blijft grijs voor eenheid) */
+        .cta-bottom-section {
+            background-color: var(--section-gray);
+            padding: 0 0 100px 0;
+            text-align: center;
+        }
+
+        .cta-box {
+            background-color: var(--white);
+            padding: 60px;
+            border-radius: 0px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+
+        .cta-box h2 {
+            font-size: 26px;
+            color: var(--dark-navy);
+            margin-bottom: 15px;
+        }
+
+        .cta-box p {
+            color: var(--text-main);
+            margin-bottom: 30px;
+        }
+
+        .btn-cta-blue {
+            display: inline-block;
+            background-color: var(--brand-blue);
+            color: var(--white);
+            padding: 16px 40px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(76, 198, 233, 0.3);
+        }
+
+        .btn-cta-blue:hover {
+            background-color: var(--dark-navy);
+            box-shadow: 0 4px 12px rgba(0, 29, 61, 0.2);
+        }
+
+        /* Responsiveness */
+        @media (max-width: 991px) {
+            .solutions-grid { grid-template-columns: repeat(2, 1fr); }
+            .intro-content h1 { font-size: 32px; }
+            body { padding-top: 100px; }
+        }
+
+        @media (max-width: 768px) {
+            .solutions-grid { grid-template-columns: 1fr; }
+            .solutions-intro-section { padding: 40px 0; }
+            .cta-box { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="solutions-intro-section">
+            <div class="container-default">
+                <div class="intro-content">
+                    <h1>Veiligheidsoplossingen</h1>
+                    <div class="intro-text-wrapper">
+                        <p><strong>Beveiliging op maat, altijd de beste oplossing. We creëren een omgeving waarin mensen zich veilig voelen én waarin ze werkelijk veilig zijn.</strong></p>
+                        <p>Kies voor de integrale veiligheidsoplossingen van We Care Safety. Wij combineren menskracht met de nieuwste techniek en data-intelligentie. Wij gaan verder dan klassieke beveiliging; wij bieden rust en continuïteit voor uw organisatie.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="solutions-grid-section">
+            <div class="container-default">
+                <div class="grid-header">
+                    <h2>Welke veiligheidsoplossingen bieden wij?</h2>
+                </div>
+
+                <div class="solutions-grid">
+                    
+                    <a href="oplossingen/evenementenbeveiliging.html" class="solution-card">
+                        <div class="card-image">
+                            <img src="image/evenementen/foto1.png" alt="Evenementenbeveiliging">
+                        </div>
+                        <div class="card-content">
+                            <h3>Evenementenbeveiliging</h3>
+                            <p>Een goed georganiseerd evenement kan niet zonder goede beveiligers. Wij zorgen voor een veilig evenement met blije mensen.</p>
+                            <div class="card-link">Meer informatie <i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                    <a href="oplossingen/objectbeveiliging.html" class="solution-card">
+                        <div class="card-image">
+                            <img src="image/objecten/foto2.png" alt="Objectbeveiliging">
+                        </div>
+                        <div class="card-content">
+                            <h3>Objectbeveiliging</h3>
+                            <p>Wij verzorgen de beveiliging van uw pand, van scholen en ziekenhuizen tot overheidsgebouwen en kantoorpanden.</p>
+                            <div class="card-link">Meer informatie <i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                    <a href="oplossingen/service-en-hospitality.html" class="solution-card">
+                        <div class="card-image">
+                            <img src="image/service/foto1.png" alt="Service- en hospitality">
+                        </div>
+                        <div class="card-content">
+                            <h3>Service- en hospitality</h3>
+                            <p>Onze beveiligers zijn tevens gastheren en -vrouwen. Wij geven uw bezoekers een veilig en welkom gevoel.</p>
+                            <div class="card-link">Meer informatie <i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                    <a href="oplossingen/verkeersmaatregelen.html" class="solution-card">
+                        <div class="card-image">
+                            <img src="image/traffic/foto1.png" alt="Verkeersmaatregelen">
+                        </div>
+                        <div class="card-content">
+                            <h3>Verkeersmaatregelen</h3>
+                            <p>Maatwerk in verkeersmanagement op locatie, zodat grote bezoekersstromen soepel en veilig verlopen.</p>
+                            <div class="card-link">Meer informatie <i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                    <a href="oplossingen/toezicht-en-handhaving.html" class="solution-card">
+                        <div class="card-image">
+                            <img src="image/handhaving/foto1.png" alt="Toezicht & Handhaving">
+                        </div>
+                        <div class="card-content">
+                            <h3>Toezicht & Handhaving</h3>
+                            <p>Wij ondersteunen bij het uitvoeren van veiligheidsbeleid en houden straten, buurten en parken veilig.</p>
+                            <div class="card-link">Meer informatie <i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-bottom-section">
+            <div class="container-default">
+                <div class="cta-box">
+                    <h2>Vraag direct een offerte aan</h2>
+                    <p>Wilt u weten wat We Care Safety voor uw veiligheid kan betekenen?</p>
+                    <a href="pages/contact.html" class="btn-cta-blue">Neem contact op</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+
+</body>
+</html>
