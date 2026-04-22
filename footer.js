@@ -1,3 +1,8 @@
+// meta.js aanroepen (Cookie banner & tracking)
+const metaScript = document.createElement('script');
+metaScript.src = 'meta.js';
+document.head.appendChild(metaScript);
+
 // Haalt het huidige jaar op (bijv. 2026)
 const currentYear = new Date().getFullYear();
 
