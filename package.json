@@ -1,0 +1,26 @@
+{
+  "name": "we-care-safety-website",
+  "version": "1.0.0",
+  "description": "We Care Safety website - professional security services",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=3000 --host=0.0.0.0 --ignorePattern='node_modules'",
+    "start": "live-server --port=8080 --host=0.0.0.0 --ignorePattern='node_modules'",
+    "build": "echo 'Build process not needed for static site' && exit 0"
+  },
+  "keywords": [
+    "security",
+    "safety",
+    "website",
+    "static"
+  ],
+  "author": "We Care Safety",
+  "license": "MIT",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.0.0"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "npm-run-all": "^4.1.5"
+  }
+}
