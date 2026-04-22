@@ -1,7 +1,7 @@
 // meta.js aanroepen (Cookie banner & tracking)
-// const metaScript = document.createElement('script');
-// metaScript.src = 'meta.js'; // Zorg dat dit pad klopt relatief aan je HTML bestanden
-// document.head.appendChild(metaScript);
+const metaScript = document.createElement('script');
+metaScript.src = 'meta.js'; // Zorg dat dit pad klopt relatief aan je HTML bestanden
+document.head.appendChild(metaScript);
 
 const headerTemplate = `
 <header class="header-wrapper">
