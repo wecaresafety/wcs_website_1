@@ -4,122 +4,157 @@
     <base href="../">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verkeersmaatregelen | We Care Safety</title>
+    <title>Werken bij | We Care Safety</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="style.css">
 
     <style>
-        /* CSS Variabelen & Reset */
-        :root { --brand-blue: #4CC6E9; --dark-navy: #001D3D; --white: #ffffff; --section-gray: #f4f5f8; --text-main: #51637b; --border-color: #e5e7eb; }
-        body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            padding-top: 130px;
-            color: var(--dark-navy);
-            background-color: var(--white);
+        /* Specifieke stijlen voor de Werken Bij pagina */
+        .jobs-hero {
+            background-color: var(--dark-navy);
+            color: white;
+            padding: 100px 0;
+            display: flex;
+            align-items: center;
         }
-        .container-default { width: 100%; max-width: 1050px; margin: 0 auto; padding: 0 30px; box-sizing: border-box; }
-        
-        /* Hero */
-        .service-hero-impact { position: relative; min-height: 600px; display: flex; align-items: center; background-size: cover; background-position: center; color: #ffffff; }
-        .service-hero-impact::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(0, 29, 61, 0.8) 0%, rgba(0, 29, 61, 0.2) 100%); z-index: 1; }
-        .hero-impact-content { position: relative; z-index: 2; max-width: 600px; }
-        .hero-impact-content h1 { font-size: 52px; font-weight: 800; margin-bottom: 20px; line-height: 1.1; }
-        .btn-hero-blue { display: inline-block; background-color: var(--brand-blue); color: #ffffff; padding: 16px 40px; text-decoration: none; font-weight: 700; transition: 0.3s; border:none; cursor:pointer; }
-        
-        /* Layout Sections */
-        .content-section, .info-block-section { padding: 80px 0; }
-        .rich-text-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; }
-        .sidebar-box { background: var(--section-gray); padding: 40px; display: flex; flex-direction: column; justify-content: center; }
-        .sidebar-list { padding-left: 20px; color: var(--text-main); line-height: 2; }
-        
-        /* Impact Card */
-        .impact-section { position: relative; height: 500px; display: flex; align-items: center; background-size: cover; background-position: center; background-attachment: fixed; }
-        .impact-section::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 29, 61, 0.4); }
-        .impact-card { position: relative; background: var(--white); padding: 50px; max-width: 500px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); z-index: 2; }
-        
-        /* Work Grid */
-        .work-list-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
-        .work-item { display: flex; align-items: center; gap: 15px; background: var(--white); padding: 15px; border: 1px solid var(--border-color); }
-        .work-item i { color: var(--brand-blue); }
-        
-        /* CTA & FAQ */
-        .cta-banner-above-faq { background-color: var(--dark-navy); color: white; padding: 50px; text-align: center; }
-        .bottom-gray-section { background-color: var(--section-gray); padding: 80px 0; }
-        .faq-wrapper { max-width: 800px; margin: 0 auto; }
-        .faq-item { background: var(--white); margin-bottom: 10px; border: 1px solid var(--border-color); }
-        .faq-question { padding: 25px 30px; display: flex; justify-content: space-between; cursor: pointer; font-weight: 700; align-items: center; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: 0.3s ease; padding: 0 30px; color: var(--text-main); line-height: 1.6; }
-        .faq-item.open .faq-answer { max-height: 500px; padding-bottom: 30px; }
 
-        /* Widget */
-        .floating-contact-widget { position: fixed; right: 0; top: 50%; transform: translateY(-50%) translateX(280px); width: 350px; background: var(--brand-blue); transition: 0.4s; z-index: 1000; display: flex; border-radius: 8px 0 0 8px; box-shadow: -5px 0 15px rgba(0,0,0,0.1); }
-        .floating-contact-widget:hover { transform: translateY(-50%) translateX(0); }
-        .widget-tab { padding: 20px 15px; writing-mode: vertical-rl; color: white; font-weight: 700; cursor: pointer; }
-        .widget-content { padding: 30px; width: 100%; }
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
 
-        @media (max-width: 768px) { .rich-text-grid, .work-list-grid { grid-template-columns: 1fr; } }
+        .jobs-hero-img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .jobs-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--brand-blue);
+        }
+
+        .intro-text-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .cta-contact-box {
+            background: var(--section-gray);
+            padding: 60px;
+            border-radius: 8px;
+            margin: 40px 0;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+        }
+
+        .employee-card {
+            text-align: center;
+        }
+
+        .employee-img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .contact-details h3 {
+            font-size: 28px;
+            color: var(--dark-navy);
+            margin-bottom: 20px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .contact-method i {
+            color: var(--brand-blue);
+            font-size: 20px;
+        }
+
+        @media (max-width: 992px) {
+            .jobs-grid, .cta-contact-box {
+                grid-template-columns: 1fr;
+            }
+            .jobs-hero { padding: 60px 0; }
+        }
     </style>
 </head>
-<body>
+<body class="layout-3">
 
     <div id="header-placeholder"></div>
 
-    <div id="solution-engine-root"></div>
-
-    <div class="floating-contact-widget">
-        <div class="widget-tab">CONTACT</div>
-        <div class="widget-content">
-            <div style="display:flex; align-items:center; margin-bottom:20px;">
-                <img src="image/Team/DavidCotino.png" alt="David" style="width:50px; height:50px; border-radius:50%; margin-right:15px;">
-                <div style="color:white; font-size:14px;"><strong>David Cotino</strong><br>Directeur</div>
+    <main>
+        <section class="jobs-hero">
+            <div class="container-default">
+                <div class="jobs-grid">
+                    <div class="jobs-image-wrap">
+                        <img src="image/home/team-home.png" alt="Werken bij We Care Safety" class="jobs-hero-img" onerror="this.src='https://via.placeholder.com/800x600/001D3D/FFFFFF?text=Team+WCS'">
+                    </div>
+                    <div class="jobs-content">
+                        <h1>Werken bij We Care Safety</h1>
+                        <p>Kom jij ons team versterken? Bij We Care Safety staat kwaliteit voorop. Wij streven continu naar het geven van de beste service en zoeken hiervoor de beste mensen in het vak.</p>
+                        <a href="contact.html" class="btn-primary" style="margin-top: 25px; display: inline-block;">Bekijk vacatures</a>
+                    </div>
+                </div>
             </div>
-            <a href="tel:+31858001835" style="color:white; text-decoration:none; display:block; margin-bottom:10px;"><i class="fa-solid fa-phone"></i> 085 800 18 35</a>
-            <a href="mailto:info@wecaresafety.nl" style="color:white; text-decoration:none;"><i class="fa-solid fa-envelope"></i> E-mail ons</a>
-        </div>
-    </div>
+        </section>
+
+        <section class="intro-text-section">
+            <div class="container-default">
+                <div style="max-width: 800px;">
+                    <h2 class="h2">Kom jij ons team versterken?</h2>
+                    <p><strong>We Care Safety</strong> is een landelijke veiligheidspartner waar kwaliteit voorop staat. Wij streven continu naar het geven van de beste service en hiervoor hebben we de beste mensen in het vak nodig. Mensen die meedenken met de opdrachtgever en duidelijk advies kunnen geven om de veiligheid en gastvrijheid te verhogen.</p>
+                    <br>
+                    <p>Ben jij geïnteresseerd om bij We Care Safety te komen werken, als bijvoorbeeld objectbeveiliger, evenementbeveiliger of op kantoor? Wij horen graag van je. Stuur een open sollicitatie of bekijk onze actuele mogelijkheden.</p>
+                </div>
+
+                <div class="cta-contact-box">
+                    <div class="employee-card">
+                        <img src="https://via.placeholder.com/300x300/4CC6E9/FFFFFF?text=Contact+Persoon" alt="Contactpersoon WCS" class="employee-img">
+                        <p><strong>Recruitment Team</strong></p>
+                        <span>We Care Safety B.V.</span>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Hoe kunnen we u helpen?</h3>
+                        <p>Wij gaan graag met je in gesprek over een toekomst bij We Care Safety!</p>
+                        <br>
+                        <div class="contact-method">
+                            <i class="fa-solid fa-phone"></i>
+                            <div>
+                                <strong>Bel ons op</strong><br>
+                                <a href="tel:+31858001835">+31 85 800 18 35</a>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <strong>E-mail ons op</strong><br>
+                                <a href="mailto:info@wecaresafety.nl">info@wecaresafety.nl</a>
+                                <p><small>Wij proberen altijd binnen 24 uur te reageren.</small></p>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="btn-primary" style="margin-top: 20px; display: inline-block;">Direct contact opnemen</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <div id="footer-placeholder"></div>
 
-    <script>
-        window.solutionConfig = {
-            title: "Verkeersmaatregelen",
-            heroTitle: "Professionele Verkeersregelaars",
-            heroDesc: "Een vlotte en veilige doorstroming van het verkeer rondom uw evenement, bouwproject of wegwerkzaamheden. Wij houden de regie strak in handen.",
-            heroImage: "image/verkeer/foto1.png", /* Pas eventueel de bestandsnaam aan */
-            contentTitle: "Veiligheid op en langs de weg",
-            contentText: `
-                <p>Bij wegafsluitingen, grote evenementen of bouwprojecten ontstaat vaak verkeershinder. Onze gecertificeerde verkeersregelaars zorgen ervoor dat alles in goede banen wordt geleid.</p>
-                <p>Zij treden op met overwicht, communiceren helder met weggebruikers en zorgen ervoor dat zowel automobilisten als voetgangers veilig hun weg kunnen vervolgen.</p>
-            `,
-            focusPoints: ["Vlotte doorstroming", "Veiligheid van wegwerkers", "Duidelijke instructies", "Voorkomen van verkeersinfarcten"],
-            impactTitle: "Van bouwplaats tot groot festival",
-            impactDesc: "Of het nu gaat om het veilig in- en uitrijden van bouwverkeer in de binnenstad of het efficiënt vullen van parkeerterreinen; wij hebben de juiste mensen.",
-            impactImage: "image/verkeer/foto2.png", /* Pas eventueel de bestandsnaam aan */
-            definitionText: "Verkeersmaatregelen en verkeersregelaars worden ingezet om verkeersstromen veilig en efficiënt om te leiden wanneer de normale verkeerssituatie is gewijzigd.",
-            tasks: [
-                "Regelen van het verkeer op kruispunten",
-                "Begeleiden van bouw- en vrachtverkeer",
-                "Verzorgen van parkeerbeheer op evenementen",
-                "Veilig laten oversteken van voetgangers",
-                "Ondersteunen bij calamiteiten op de weg",
-                "Plaatsen en beheren van wegafzettingen"
-            ],
-            whyPartnerText: "We Care Safety beschikt over bevoegde verkeersregelaars. We denken proactief mee in het mobiliteitsplan en beschikken over de juiste communicatieapparatuur.",
-            faqs: [
-                { q: "Zijn jullie verkeersregelaars bevoegd?", a: "Ja, onze beroepsverkeersregelaars beschikken over de wettelijk vereiste certificaten en aanstellingen." },
-                { q: "Doen jullie ook het parkeerbeheer op evenementen?", a: "Zeker, wij verzorgen het complete logistieke plaatje. Van de aanrijdroute tot het strak inparkeren op het terrein." },
-                { q: "Wat doen jullie bij agressie in het verkeer?", a: "Onze regelaars zijn getraind in conflictbeheersing. Ze treden de-escalerend op en werken nauw samen met de politie indien nodig." }
-            ]
-        };
-    </script>
-
     <script src="header.js"></script>
     <script src="footer.js"></script>
-    <script src="components/contact-opnemen-vraag.js"></script>
-    
-    <script src="components/solution-template.js"></script>
+
 </body>
 </html>

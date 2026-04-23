@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Werken bij | We Care Safety</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        :root {
+            --wcs-dark-blue: #003061; /* De kleur van de koppen */
+            --wcs-accent-blue: #2c90e1; /* De kleur van de knop */
+            --wcs-text-gray: #666666;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--wcs-text-gray);
+            margin: 0;
+            background-color: #fff;
+        }
+
+        .container-custom {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- HERO SECTIE (Bovenkant) --- */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+            margin-bottom: 60px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .hero-content h1 {
+            color: var(--wcs-dark-blue);
+            font-size: 48px;
+            font-weight: 700;
+            margin: 0 0 20px 0;
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        /* De blauwe knop */
+        .btn-blue {
+            background-color: var(--wcs-accent-blue);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .btn-blue:hover {
+            background-color: #1e7bc7;
+        }
+
+        /* --- CONTENT SECTIE (Onderkant) --- */
+        .section-title-center {
+            text-align: center;
+            color: var(--wcs-dark-blue);
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        .text-block {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .text-block p {
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+
+        /* De link onderaan met het pijltje */
+        .link-with-arrow {
+            color: var(--wcs-accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+        }
+
+        .link-with-arrow:before {
+            content: "\003E"; /* Het '>' teken */
+            margin-right: 10px;
+            font-weight: 400;
+        }
+
+        .link-with-arrow:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main class="container-custom">
+        
+        <section class="hero-grid">
+            <div class="hero-image">
+                <img src="image/objecten/object2.png" alt="Werken bij We Care Safety">
+            </div>
+            <div class="hero-content">
+                <h1>Werken bij<br>We Care Safety</h1>
+                <p>Kom jij ons team versterken? Bij We Care Safety staat kwaliteit voorop. Wij streven continu naar het geven van de beste service en zoeken hiervoor de beste mensen in het vak.</p>
+                <a href="https://werkenbijwcs.nl" class="btn-blue">Ga naar werkenbijWcs.nl</a>
+            </div>
+        </section>
+
+        <section class="text-block">
+            <h2 class="section-title-center">Kom jij ons team versterken?</h2>
+            
+            <p>We Care Safety is een landelijke veiligheidspartner waar kwaliteit voorop staat. Wij streven continu naar het geven van de beste service en hiervoor hebben we de beste mensen in het vak nodig. Mensen die meedenken met de opdrachtgever en duidelijk advies kunnen geven om de veiligheid en gastvrijheid te verhogen.</p>
+            
+            <p>Ben jij geïnteresseerd om bij We Care Safety te komen werken, als bijvoorbeeld objectbeveiliger, evenementbeveiliger of op kantoor? Bekijk via onderstaande link al onze openstaande vacatures of stuur een open sollicitatie.</p>
+            
+            <a href="https://werkenbijWcs.nl" class="link-with-arrow">Ga naar werkenbijWcs.nl</a>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+
+</body>
+</html>

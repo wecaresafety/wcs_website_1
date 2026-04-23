@@ -29,6 +29,18 @@ const footerTemplate = `
             </div>
 
         <div class="footer-col-sitemap">
+
+            <div>
+                <h4>Juridisch</h4>
+                <ul>
+                    <li><a href="pages/algemene-voorwaarden.html">Algemene voorwaarden</a></li>
+                    <li><a href="#">Cookiebeleid</a></li>
+                    <li><a href="pdf/privacybeleid.pdf" target="_blank">Privacybeleid</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                    <li><a href="pages/onze-keurmerken.html">Onze keurmerken</a></li>
+                </ul>
+            </div>
+
             <div>
                 <h4>Sectoren</h4>
                 <ul>
@@ -47,20 +59,10 @@ const footerTemplate = `
                     <li><a href="over-ons.html">Over WCS</a></li>
                     <li><a href="#">Mijn WCS</a></li>
                     <li><a href="pages/zoeken.html">Zoeken</a></li>
-                    <li><a href="werkenbij.html">Werken bij</a></li>
+                    <li><a href="pages/werkenbij.html">Werken bij</a></li>
                 </ul>
             </div>
 
-            <div>
-                <h4>Juridisch</h4>
-                <ul>
-                    <li><a href="pages/algemene-voorwaarden.html">Algemene voorwaarden</a></li>
-                    <li><a href="#">Cookiebeleid</a></li>
-                    <li><a href="pdf/privacybeleid.pdf" target="_blank">Privacybeleid</a></li>
-                    <li><a href="#">Disclaimer</a></li>
-                    <li><a href="pages/onze-keurmerken.html">Onze keurmerken</a></li>
-                </ul>
-            </div>
         </div>
 
     </div>
@@ -87,10 +89,15 @@ const footerTemplate = `
         <div class="footer-bottom-container">
             
             <div class="bottom-left">
-                <span>© 2024-${currentYear} We Care Safety B.V.</span>
-                <a href="pages/algemene-voorwaarden.html">Algemene voorwaarden</a>
+                <span>© 2024-${currentYear}</span>
+                <span>|</span>
                 <a href="pdf/privacybeleid.pdf">Privacy</a>
+                <span>|</span>
+                <span>Instellingen </span>
             </div>
+
+            <div class="bottom-right">
+                <span> We Care Safety B.V. </span>
             
             </div>
     </div>

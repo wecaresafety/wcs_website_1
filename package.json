@@ -12,11 +12,21 @@
     "security",
     "safety",
     "website",
-    "static"
+    "static",
+    "flaticon",
+    "icons",
+    "We Care Safety",
+    "We care safety B.V.",
+    "We Care Safety B.V.",
+    "We care safety Contact",
+    "We care safety Casussen",
+    "We care safety Offerte aanvragen",
+    "Beveiliging Offerte aanvragen"
   ],
   "author": "We Care Safety",
   "license": "MIT",
   "dependencies": {
+    "@flaticon/flaticon-uicons": "^3.3.1",
     "@fortawesome/fontawesome-free": "^6.0.0"
   },
   "devDependencies": {
