@@ -83,21 +83,17 @@
         }
 
         /* HERO */
+        /* HERO SECTIE (GEFIXT) */
         .hero-section {
-            position: relative;
-            background-image: url('image/objecten/object4.png'); 
+            /* De gradient en de afbeelding staan nu netjes gecombineerd in 1 regel */
+            background-image: 
+                linear-gradient(90deg, rgba(0, 29, 61, 0.85) 0%, rgba(0, 29, 61, 0.4) 100%), 
+                url('image/objecten/object6.png'); 
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             padding: 180px 0; 
             color: var(--white);
-        }
-
-        .hero-section::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(90deg, rgba(0, 29, 61, 0.85) 0%, rgba(0, 29, 61, 0.4) 100%);
-            z-index: 1;
         }
 
         .hero-content {
@@ -154,7 +150,7 @@
         .intro-image {
             width: 100%;
             height: 450px;
-            background-image: url('image/home/team-home.png');
+            background-image: url('image/objecten/object5.png');
             background-size: cover;
             background-position: center;
             border-radius: 4px;
@@ -248,8 +244,36 @@
         @media (max-width: 992px) {
             .intro-grid { grid-template-columns: 1fr; }
             .services-grid { grid-template-columns: repeat(2, 1fr); }
-            .hero-section { text-align: center; }
-            .hero-content { margin: 0 auto; }
+            .hero-section {
+    position: relative;
+    /* Pad aangepast naar de juiste map vanaf de index.html */
+    background-image: url('image/objecten/object5.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 180px 0; 
+    color: var(--white);
+    min-height: 400px;
+}
+
+/* De overlay die de foto iets donkerder maakt zodat tekst leesbaar is */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    /* De gradient is nu subtieler zodat je de foto goed ziet */
+    background: linear-gradient(90deg, rgba(0, 29, 61, 0.7) 0%, rgba(0, 29, 61, 0.3) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 650px;
+}
             .hero-buttons { justify-content: center; }
         }
 
@@ -257,6 +281,8 @@
             .hero-title { font-size: 36px; }
             .services-grid { grid-template-columns: 1fr; }
         }
+
+        
     </style>
 </head>
 <body>

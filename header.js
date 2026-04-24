@@ -134,7 +134,7 @@ const headerTemplate = `
             <div class="top-bar-right">
                 <a href="/pages/over-ons.html">Over ons</a>
                 <a href="/pages/werkenbij.html">Werken bij</a>
-                <a href="/pages/contact.html">Contact</a>
+                <a href="/pages/contact.html">FAQ & Contact</a>
             </div>
         </div>
     </div>
@@ -184,7 +184,7 @@ const headerTemplate = `
     <ul class="mobile-nav-secondary"> 
         <li><a href="/pages/over-ons.html">Over ons</a></li> 
         <li><a href="/pages/werkenbij.html">Werken bij</a></li> 
-        <li><a href="/pages/contact.html">Contact</a></li> 
+        <li><a href="/pages/contact.html">Faq & Contact</a></li> 
         <li><a href="/pages/offerte-aanvragen.html">Prijsopgave aanvragen</a></li> 
     </ul> 
 </div>

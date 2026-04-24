@@ -8,8 +8,29 @@
     cookieScript.src = 'https://cdn.cookie-script.com/s/9b948c1224edf01e08bca691ca07beb2.js'; 
     document.head.appendChild(cookieScript);
 
-    // 2. Afbeeldingen "Preloaden" naar de Browser Cache
-    // Voeg hier de paden toe van de belangrijkste afbeeldingen (logo, hero's)
+    // 2. Google Analytics Inladen (Genereert _ga cookies)
+    // Vervang 'G-XXXXXXXXXX' door jouw eigen Google Tag ID
+    const gaId = 'G-XXXXXXXXXX'; 
+    const gaScript = document.createElement('script');
+    gaScript.async = true;
+    gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+    document.head.appendChild(gaScript);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', gaId);
+
+    // 3. Microsoft Clarity Inladen (Genereert _clsk en _clck cookies)
+    // Vervang 'YOUR_CLARITY_ID' door jouw eigen Clarity ID
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "YOUR_CLARITY_ID");
+
+
+    // 4. Afbeeldingen "Preloaden"
     const assetsToCache = [
         '/logo_1.png',
         '/image/objecten/object2.png',
@@ -18,28 +39,24 @@
 
     function preloadAssets(urls) {
         urls.forEach(url => {
-            // Maak een onzichtbaar preload-element aan in de head
             const link = document.createElement('link');
             link.rel = 'preload';
             link.as = 'image';
             link.href = url;
             document.head.appendChild(link);
 
-            // Forceer de browser om het object alvast te downloaden
             const img = new Image();
             img.src = url;
         });
     }
 
-    // Start het preloaden zodra de browser een gaatje vrij heeft (idle)
     if ('requestIdleCallback' in window) {
         requestIdleCallback(() => preloadAssets(assetsToCache));
     } else {
         window.addEventListener('load', () => preloadAssets(assetsToCache));
     }
 
-    // 3. Optimalisatie: Lazy Loading activeren voor de rest van de pagina
-    // Dit zorgt ervoor dat afbeeldingen die niet direct in beeld zijn, pas later laden
+    // 5. Optimalisatie: Lazy Loading
     document.addEventListener("DOMContentLoaded", () => {
         const lazyImages = document.querySelectorAll("img:not([loading])");
         lazyImages.forEach(img => {
@@ -47,7 +64,7 @@
         });
     });
 
-    console.log("We Care Safety: Cookie-instellingen & Image Caching geactiveerd.");
+    console.log("We Care Safety: Cookies (GA & Clarity) & Image Caching geactiveerd.");
 })();
 
 // Speculative Preloading: start laden bij hover
@@ -55,13 +72,12 @@ document.addEventListener('mouseover', (e) => {
     const link = e.target.closest('a');
     if (link && link.href && !link.dataset.preloaded) {
         const href = link.href;
-        // Alleen interne links
         if (href.startsWith(window.location.origin) && !href.includes('#')) {
             const prefetchLink = document.createElement('link');
             prefetchLink.rel = 'prefetch';
             prefetchLink.href = href;
             document.head.appendChild(prefetchLink);
-            link.dataset.preloaded = 'true'; // Voorkom dubbel laden
+            link.dataset.preloaded = 'true';
         }
     }
 });
