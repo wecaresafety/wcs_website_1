@@ -130,9 +130,10 @@ const headerTemplate = `
 <header class="header-wrapper">
     <div class="header-top-bar">
         <div class="header-container top-bar-inner">
-            <div class="top-bar-left"><span></span></div>
+            <div class="top-bar-left">085 800 18 35<span></span></div>
             <div class="top-bar-right">
                 <a href="/pages/over-ons.html">Over ons</a>
+                <a href="/pages/nieuws.html">Nieuws</a>
                 <a href="/pages/werkenbij.html">Werken bij</a>
                 <a href="/pages/contact.html">FAQ & Contact</a>
             </div>
@@ -183,6 +184,7 @@ const headerTemplate = `
 
     <ul class="mobile-nav-secondary"> 
         <li><a href="/pages/over-ons.html">Over ons</a></li> 
+        <li><a href="/pages/nieuws.html">Nieuws</a></li> 
         <li><a href="/pages/werkenbij.html">Werken bij</a></li> 
         <li><a href="/pages/contact.html">Faq & Contact</a></li> 
         <li><a href="/pages/offerte-aanvragen.html">Prijsopgave aanvragen</a></li> 

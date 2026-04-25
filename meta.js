@@ -9,8 +9,7 @@
     document.head.appendChild(cookieScript);
 
     // 2. Google Analytics Inladen (Genereert _ga cookies)
-    // Vervang 'G-XXXXXXXXXX' door jouw eigen Google Tag ID
-    const gaId = 'G-XXXXXXXXXX'; 
+    const gaId = 'G-WJG88FK2'; 
     const gaScript = document.createElement('script');
     gaScript.async = true;
     gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
@@ -21,32 +20,32 @@
     gtag('js', new Date());
     gtag('config', gaId);
 
-    // 3. Microsoft Clarity Inladen (Genereert _clsk en _clck cookies)
-    // Vervang 'YOUR_CLARITY_ID' door jouw eigen Clarity ID
+    // 3. Microsoft Clarity Inladen (FIXED: removed <script> tags)
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "YOUR_CLARITY_ID");
-
+    })(window, document, "clarity", "script", "wgofe4i6j6");
 
     // 4. Afbeeldingen "Preloaden"
     const assetsToCache = [
         '/logo_1.png',
         '/image/objecten/object2.png',
-        'https://via.placeholder.com/300x300/4CC6E9/FFFFFF?text=Contact+Persoon'
+        'https://placehold.co/300x300/4CC6E9/FFFFFF?text=Contact+Persoon'
     ];
 
     function preloadAssets(urls) {
         urls.forEach(url => {
+            if (!url) return;
+
+            // We gebruiken alleen de moderne 'preload' link, geen 'new Image()' meer
+            // Dit voorkomt dubbele netwerkverzoeken en afgebroken verbindingen.
             const link = document.createElement('link');
             link.rel = 'preload';
             link.as = 'image';
             link.href = url;
-            document.head.appendChild(link);
-
-            const img = new Image();
-            img.src = url;
+            
+            document.head?.appendChild(link);
         });
     }
 

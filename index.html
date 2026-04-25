@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | We Care Safety</title>
     
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="theme-color" content="#4ac6e8">
@@ -14,15 +15,12 @@
     
     <link rel="stylesheet" href="style.css">
 
-    <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-WJG88FK2');</script>
-<!-- End Google Tag Manager -->
-
-    <style>
+<style>
         /* =========================================
            ALGEMENE STIJLEN & VARIABELEN
            ========================================= */
@@ -253,35 +251,35 @@
             .intro-grid { grid-template-columns: 1fr; }
             .services-grid { grid-template-columns: repeat(2, 1fr); }
             .hero-section {
-    position: relative;
-    /* Pad aangepast naar de juiste map vanaf de index.html */
-    background-image: url('image/objecten/object5.png'); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 180px 0; 
-    color: var(--white);
-    min-height: 400px;
-}
+                position: relative;
+                /* Pad aangepast naar de juiste map vanaf de index.html */
+                background-image: url('image/objecten/object5.png'); 
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                padding: 180px 0; 
+                color: var(--white);
+                min-height: 400px;
+            }
 
-/* De overlay die de foto iets donkerder maakt zodat tekst leesbaar is */
-.hero-section::before {
-    content: "";
-    position: absolute;
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
-    /* De gradient is nu subtieler zodat je de foto goed ziet */
-    background: linear-gradient(90deg, rgba(0, 29, 61, 0.7) 0%, rgba(0, 29, 61, 0.3) 100%);
-    z-index: 1;
-}
+            /* De overlay die de foto iets donkerder maakt zodat tekst leesbaar is */
+            .hero-section::before {
+                content: "";
+                position: absolute;
+                top: 0; 
+                left: 0; 
+                width: 100%; 
+                height: 100%;
+                /* De gradient is nu subtieler zodat je de foto goed ziet */
+                background: linear-gradient(90deg, rgba(0, 29, 61, 0.7) 0%, rgba(0, 29, 61, 0.3) 100%);
+                z-index: 1;
+            }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 650px;
-}
+            .hero-content {
+                position: relative;
+                z-index: 2;
+                max-width: 650px;
+            }
             .hero-buttons { justify-content: center; }
         }
 
@@ -289,8 +287,6 @@
             .hero-title { font-size: 36px; }
             .services-grid { grid-template-columns: 1fr; }
         }
-
-        
     </style>
 </head>
 <body>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Offerte Aanvragen | We Care Safety</title>
     
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="theme-color" content="#4ac6e8">
@@ -15,6 +16,8 @@
     
     <link rel="stylesheet" href="style.css">
 
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     <style>
         /* =========================================
            BASIS STIJLEN & VARIABELEN
@@ -23,8 +26,9 @@
             --brand-blue: #4CC6E9;
             --dark-navy: #001D3D;
             --white: #ffffff;
-            --input-bg: #f1f4f8; /* Zachtgrijze kleur van de velden */
+            --input-bg: #f1f4f8; 
             --text-gray: #57636c;
+            --border-color: #e5e7eb;
         }
 
         body {
@@ -48,7 +52,6 @@
             padding: 0 30px;
         }
 
-        /* Het formulier is niet over de volle breedte, maar links uitgelijnd */
         .offerte-form-wrapper {
             max-width: 700px;
         }
@@ -78,7 +81,7 @@
             padding: 16px 15px;
             border: none;
             background-color: var(--input-bg);
-            border-radius: 0; /* Strakke hoeken, geen afronding */
+            border-radius: 0; 
             font-family: 'Inter', sans-serif;
             font-size: 15px;
             color: var(--dark-navy);
@@ -87,7 +90,7 @@
         }
 
         .form-control::placeholder {
-            color: #8b95a1; /* Kleur van de placeholder tekst */
+            color: #8b95a1; 
         }
 
         .form-control:focus {
@@ -95,7 +98,6 @@
             background-color: #e2e8f0;
         }
 
-        /* Specifieke marges voor velden die onder elkaar staan in dezelfde sectie */
         .mb-15 {
             margin-bottom: 15px;
         }
@@ -105,14 +107,38 @@
             min-height: 140px;
         }
 
-        /* Grid layout voor velden naast elkaar (zoals E-mail & Postcode) */
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
         }
 
-        /* Custom Select (Dropdown) Styling */
+        /* KVK Zoekveld Layout */
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .input-group .form-control {
+            margin-bottom: 0; /* Zorgt dat het gelijk loopt met de knop */
+        }
+
+        .btn-search {
+            background-color: var(--dark-navy);
+            color: var(--white);
+            border: none;
+            padding: 0 25px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+            white-space: nowrap; /* Voorkomt dat tekst op 2 regels komt */
+        }
+
+        .btn-search:hover {
+            opacity: 0.85;
+        }
+
         .custom-select-wrapper {
             position: relative;
         }
@@ -122,12 +148,11 @@
             -webkit-appearance: none;
             -moz-appearance: none;
             cursor: pointer;
-            padding-right: 40px; /* Ruimte voor het pijltje */
+            padding-right: 40px; 
         }
 
-        /* Het pijltje in de dropdown */
         .custom-select-wrapper::after {
-            content: '\f078'; /* FontAwesome chevron-down */
+            content: '\f078'; 
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             position: absolute;
@@ -135,10 +160,56 @@
             top: 50%;
             transform: translateY(-50%);
             color: #8b95a1;
-            pointer-events: none; /* Zorgt dat je er doorheen kan klikken */
+            pointer-events: none; 
         }
 
-        /* Verzend Knop - Lichtblauw zoals in foto image_8dcc31.png */
+        /* =========================================
+           CUSTOM CHECKBOX STIJLEN
+           ========================================= */
+        .checkbox-wrapper {
+            margin: 25px 0 35px 0;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .custom-checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--border-color);
+            background: var(--input-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            flex-shrink: 0; 
+        }
+
+        .custom-checkbox.checked {
+            background-color: var(--brand-blue);
+            border-color: var(--brand-blue);
+        }
+
+        .custom-checkbox i {
+            color: white;
+            font-size: 12px;
+            display: none;
+        }
+
+        .custom-checkbox.checked i {
+            display: block;
+        }
+
+        .checkbox-label {
+            font-size: 14px;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
         .submit-btn-blue {
             background-color: var(--brand-blue);
             color: var(--white);
@@ -146,10 +217,10 @@
             padding: 16px 35px;
             font-size: 15px;
             font-weight: 600;
-            border-radius: 0; /* Strakke hoeken */
+            border-radius: 0; 
             cursor: pointer;
             transition: opacity 0.2s ease;
-            margin-top: 10px;
+            margin-top: 20px;
         }
 
         .submit-btn-blue:hover {
@@ -164,7 +235,7 @@
         /* Responsiveness */
         @media (max-width: 768px) {
             .form-row {
-                grid-template-columns: 1fr; /* Onder elkaar op mobiel */
+                grid-template-columns: 1fr; 
             }
             .offerte-section {
                 padding: 50px 0 100px 0;
@@ -186,7 +257,7 @@
                 <div class="offerte-form-wrapper">
                     <h1 class="page-title">Vrijblijvende offerte aanvragen</h1>
                     
-                    <form id="offerteForm">
+                    <form id="offerteForm" action="#" method="POST">
                         
                         <div class="form-section">
                             <label class="form-label">Waarvoor wilt u een vrijblijvende offerte aanvragen?*</label>
@@ -198,8 +269,11 @@
                                     <option value="Evenementen">Evenementen</option>
                                     <option value="Crowd management">Crowd management</option>
                                     <option value="Receptiediensten">Receptiediensten</option>
+                                    <option value="BOA">BOA</option>
                                     <option value="Toezichthouder">Toezichthouder</option>
+                                    <option value="Brandwacht">Brandwacht</option>
                                     <option value="Straatcoach">Straatcoach</option>
+                                    <option value="Verkeersregelaar">Verkeersregelaar</option>
                                     <option value="Overig">Overig</option>
                                 </select>
                             </div>
@@ -214,24 +288,37 @@
                         <div class="form-section">
                             <label class="form-label">Uw gegevens*</label>
                             
+                            <div class="input-group mb-15">
+                                <input type="text" class="form-control" id="kvk" placeholder="KVK nummer">
+                                <button type="button" class="btn-search" id="btnSearchKvk">Zoeken</button>
+                            </div>
+
                             <input type="text" class="form-control mb-15" id="bedrijfsnaam" placeholder="Bedrijfsnaam">
-                            
-                            <input type="text" class="form-control mb-15" id="kvk" placeholder="KVK nummer">
-                            
                             <input type="text" class="form-control mb-15" id="naam" placeholder="Voor- en achternaam" required>
-                            
                             <input type="tel" class="form-control mb-15" id="telefoon" placeholder="Telefoonnummer" required>
                             
                             <div class="form-row mb-15">
-                                <input type="email" class="form-control" id="email" placeholder="E-mailadress" required>
+                                <input type="email" class="form-control" id="email" placeholder="E-mailadres" required>
                                 <input type="text" class="form-control" id="postcode" placeholder="Postcode">
                             </div>
                             
                             <div class="form-row">
                                 <input type="text" class="form-control" id="huisnr" placeholder="Huisnr.">
-                                <div></div>
+                                <input type="text" class="form-control" id="stad" placeholder="Plaats/Stad">
                             </div>
                         </div>
+
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-group" id="offerte-checkbox-trigger">
+                                <div class="custom-checkbox" id="offerte-privacy-check">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <span class="checkbox-label">Ik ga akkoord met de privacyvoorwaarden van <strong>We Care Safety.</strong> *</span>
+                                <input type="checkbox" id="offerte-hidden-privacy" required style="display: none;">
+                            </div>
+                        </div>
+
+                        <div class="g-recaptcha" data-sitekey="6LcZ08gsAAAAAFY6izOFURyVKbJDlH15dP3wzFsr" style="margin-bottom: 20px;"></div>
 
                         <button type="submit" class="submit-btn-blue" id="submitBtn">Bericht versturen</button>
 
@@ -247,6 +334,76 @@
     <script src="header.js"></script>
     <script src="footer.js"></script>
     <script src="api/offerte-aanvragen.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. Privacy Checkbox Logica
+            const trigger = document.getElementById('offerte-checkbox-trigger');
+            const visualBox = document.getElementById('offerte-privacy-check');
+            const hiddenInput = document.getElementById('offerte-hidden-privacy');
+
+            if (trigger && visualBox && hiddenInput) {
+                trigger.addEventListener('click', function() {
+                    hiddenInput.checked = !hiddenInput.checked;
+                    visualBox.classList.toggle('checked', hiddenInput.checked);
+                });
+            }
+
+            // 2. KVK Zoek Logica
+            const btnSearchKvk = document.getElementById('btnSearchKvk');
+            const kvkInput = document.getElementById('kvk');
+            const bedrijfsnaamInput = document.getElementById('bedrijfsnaam');
+            const stadInput = document.getElementById('stad');
+
+            if(btnSearchKvk && kvkInput) {
+                btnSearchKvk.addEventListener('click', function() {
+                    const kvkNummer = kvkInput.value.replace(/\s/g, ''); // Spaties weghalen
+
+                    if (kvkNummer === '') {
+                        alert('Vul eerst een geldig KvK nummer in.');
+                        return;
+                    }
+
+                    // Visuele feedback op de knop
+                    const originalText = btnSearchKvk.innerText;
+                    btnSearchKvk.innerText = 'Zoeken...';
+                    btnSearchKvk.disabled = true;
+
+                    // Haal de data op via de API
+                    fetch(`https://free.bedrijfsdata.nl/v1.1/kvk?kvk=${kvkNummer}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.status === "ok" && data.found > 0 && data.kvk.length > 0) {
+                                // Veld vullen met de resultaten
+                                bedrijfsnaamInput.value = data.kvk[0].name || "";
+                                stadInput.value = data.kvk[0].city || "";
+                                
+                                // Succes feedback
+                                btnSearchKvk.innerText = 'Gevonden!';
+                                bedrijfsnaamInput.style.backgroundColor = '#e8f5e9'; // Heel lichtgroen
+                                stadInput.style.backgroundColor = '#e8f5e9';
+                            } else {
+                                alert('Er is geen bedrijf gevonden met dit KvK nummer.');
+                                btnSearchKvk.innerText = originalText;
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error fetching KVK data:', error);
+                            alert('Er was een probleem met het ophalen van de gegevens. Controleer uw verbinding.');
+                            btnSearchKvk.innerText = originalText;
+                        })
+                        .finally(() => {
+                            // Reset de knop na 2,5 seconden
+                            setTimeout(() => {
+                                btnSearchKvk.innerText = originalText;
+                                btnSearchKvk.disabled = false;
+                            }, 2500);
+                        });
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>
