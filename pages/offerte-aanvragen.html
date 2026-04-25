@@ -16,7 +16,7 @@
     
     <link rel="stylesheet" href="style.css">
 
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcZ08gsAAAAAFY6izOFURyVKbJDlH15dP3wzFsr"></script>
 
     <style>
         /* =========================================
@@ -257,7 +257,7 @@
                 <div class="offerte-form-wrapper">
                     <h1 class="page-title">Vrijblijvende offerte aanvragen</h1>
                     
-                    <form id="offerteForm" action="#" method="POST">
+                    <form id="offerteForm" action="#" method="POST" onsubmit="event.preventDefault();">
                         
                         <div class="form-section">
                             <label class="form-label">Waarvoor wilt u een vrijblijvende offerte aanvragen?*</label>
@@ -318,9 +318,9 @@
                             </div>
                         </div>
 
-                        <div class="g-recaptcha" data-sitekey="6LcZ08gsAAAAAFY6izOFURyVKbJDlH15dP3wzFsr" style="margin-bottom: 20px;"></div>
+                        
 
-                        <button type="submit" class="submit-btn-blue" id="submitBtn">Bericht versturen</button>
+                        <button class="g-recaptcha submit-btn-blue" data-sitekey="6LcZ08gsAAAAAFY6izOFURyVKbJDlH15dP3wzFsr" data-callback='onSubmit' data-action='submit' id="submitBtn">Bericht versturen</button>
 
                     </form>
                 </div>
@@ -405,5 +405,22 @@
         });
     </script>
 
+    <script>
+    function onSubmit(token) {
+        // Controleer eerst of alle verplichte velden zijn ingevuld (HTML5 validatie)
+        const form = document.getElementById("offerteForm");
+        
+        if (form.checkValidity()) {
+            // Als alles is ingevuld, roep dan de functie aan die de data naar Power Automate stuurt
+            // We geven de reCAPTCHA token mee, zodat je deze later (optioneel) in je backend kunt checken
+            verstuurNaarPowerAutomate(token); 
+        } else {
+            // Laat de browser de standaard foutmeldingen tonen ("Dit veld is verplicht")
+            form.reportValidity();
+            // Reset de reCAPTCHA zodat de knop weer werkt
+            grecaptcha.enterprise.reset();
+        }
+    }
+    </script>
 </body>
 </html>
